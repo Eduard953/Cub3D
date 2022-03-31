@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/30 19:01:30 by pstengl          ###   ########.fr        #
+#    Updated: 2022/03/31 03:16:19 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBRARIES=	./libraries
 
 # Other Variables:
 COMPILER=	gcc
-COMPFLAGS=	-Wall -Werror -Wextra -v
+COMPFLAGS=	-Wall -Werror -Wextra
 STDLIBS=	m
 NONSTDLIBS=	libft
 
@@ -35,7 +35,7 @@ SRCFILES=\
 # Do not change anything beyond this point!
 # ------------------------------------------
 
-## Process Variables
+# Process Variables
 CC=			$(COMPILER)
 CFLAGS=		$(COMPFLAGS) -I $(INCLUDE) -I $(addprefix $(LIBRARIES)/,$(NONSTDLIBS))
 LDFLAGS=	$(foreach lib,$(NONSTDLIBS),-L$(LIBRARIES)/$(lib))
@@ -59,10 +59,10 @@ $(OBJS): $(BUILD)%.o : $(SOURCE)%.c
 # Main Build Rule
 $(BINARIES)/$(NAME): $(OBJS)
 	for lib in $(NONSTDLIBS);\
-		do $(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib all;\
+		do $(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib bonus;\
 	done
 	mkdir -p $(BINARIES)
-	$(CC) $(CFLAGS) $(OBJS) -o $(LDFLAGS) $(LDLIBS) -o $(BINARIES)/$(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -o $(BINARIES)/$(NAME) $(LDFLAGS) $(LDLIBS)
 
 # Clean up Objects
 clean:
