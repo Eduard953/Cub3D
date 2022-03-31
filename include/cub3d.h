@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/03/31 17:22:04 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:35:25 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,21 @@ typedef struct s_coord
 }	t_coord;
 
 typedef struct s_map {
-    char	**tiles;
-    char	*texture_north;
-    char	*texture_east;
-    char	*texture_south;
-    char	*texture_west;
-    int 	ceiling_color;
-    int		floor_color;
+	char	**tiles;
+	char	*texture_north;
+	char	*texture_east;
+	char	*texture_south;
+	char	*texture_west;
+	int		ceiling_color;
+	int		floor_color;
 	t_coord	size;
 }	t_map;
 
 typedef struct s_data
 {
-	void		*mlx;
-	void		*win;
-	t_map		map;
+	void	*mlx;
+	void	*win;
+	t_map	map;
 }	t_data;
 
 #endif
