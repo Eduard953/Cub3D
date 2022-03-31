@@ -6,12 +6,14 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/03/30 17:08:37 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/03/31 16:33:48 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	check_format(int argc, char **argv)
 {
+	int	len;
+
 	if (argc < 2)
 	{
 		printf("too few args");
@@ -22,7 +24,8 @@ void	check_format(int argc, char **argv)
 		printf("too many args");
 		exit(1);
 	}
-	if (ft_strnstr(argv[1], ".cub", ft_strlen(argv[1])) == NULL)
+	len = ftstrlen(argv[1]);
+	if (len < 5 || ft_strnstr(argv[1] + len - 4, ".cub", 4) == NULL)
 	{
 		printf("use .cub map");
 		exit(1);
