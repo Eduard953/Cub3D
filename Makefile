@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/31 03:16:19 by pstengl          ###   ########.fr        #
+#    Updated: 2022/03/31 03:18:07 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,12 +24,10 @@ LIBRARIES=	./libraries
 COMPILER=	gcc
 COMPFLAGS=	-Wall -Werror -Wextra
 STDLIBS=	m
-NONSTDLIBS=	libft
+NONSTDLIBS=
 
 # Source Files:
 SRCFILES=\
-	main.c\
-	print_da_thing.c
 
 # ------------------------------------------
 # Do not change anything beyond this point!
@@ -58,7 +56,7 @@ $(OBJS): $(BUILD)%.o : $(SOURCE)%.c
 
 # Main Build Rule
 $(BINARIES)/$(NAME): $(OBJS)
-	for lib in $(NONSTDLIBS);\
+	@for lib in $(NONSTDLIBS);\
 		do $(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib bonus;\
 	done
 	mkdir -p $(BINARIES)
@@ -66,14 +64,14 @@ $(BINARIES)/$(NAME): $(OBJS)
 
 # Clean up Objects
 clean:
-	for lib in $(NONSTDLIBS);\
+	@for lib in $(NONSTDLIBS);\
 		do $(MAKE) -C $(LIBRARIES)/$$lib clean;\
 	done
 	$(RM) -r $(BUILD)
 
 # Clean up Executables and static libraries
 fclean: clean
-	for lib in $(NONSTDLIBS);\
+	@for lib in $(NONSTDLIBS);\
 		do $(MAKE) -C $(LIBRARIES)/$$lib fclean;\
 	done
 	$(RM) -r $(BINARIES)
