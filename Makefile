@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/31 09:55:25 by pstengl          ###   ########.fr        #
+#    Updated: 2022/03/31 09:59:16 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ LDLIBS:=\
 SRCS:=		$(addprefix $(SOURCE)/,$(SRCFILES))
 OBJS:=		$(SRCS:$(SOURCE)/%.c=$(BUILD)/%.o)
 
-.PHONY: $(BINARIES)/$(NAME) $(NAME) all clean fclean re bonus
+.PHONY: $(BINARIES)/$(NAME) $(NAME) all clean fclean re bonus norm
 
 # Catch Rules
 all: $(BINARIES)/$(NAME)
@@ -58,7 +58,7 @@ $(OBJS): $(BUILD)%.o : $(SOURCE)%.c
 # Main Build Rule
 $(BINARIES)/$(NAME): $(OBJS)
 	@for lib in $(NONSTDLIBS);\
-		do $(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib bonus;\
+		do $(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib all;\
 	done
 	mkdir -p $(BINARIES)
 	$(CC) $(CFLAGS) $(OBJS) -o $(BINARIES)/$(NAME) $(LDFLAGS) $(LDLIBS)
@@ -84,3 +84,6 @@ re: fclean all
 bonus:
 	@echo "No Bonus!"
 
+# Check the Norm
+norm:
+	norminette .
