@@ -6,28 +6,28 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/31 08:15:17 by pstengl          ###   ########.fr        #
+#    Updated: 2022/03/31 09:55:25 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Executable Name:
-NAME=		Cub3D
+NAME:=			Cub3D
 
 # Folders:
-BINARIES=	./binaries
-BUILD=		./build
-INCLUDE=	./include
-SOURCE=		./source
-LIBRARIES=	./libraries
+BINARIES:=		./binaries
+BUILD:=			./build
+INCLUDE:=		./include
+SOURCE:=		./source
+LIBRARIES:=		./libraries
 
 # Other Variables:
-COMPILER=	gcc
-COMPFLAGS=	-Wall -Werror -Wextra
-STDLIBS=	m
-NONSTDLIBS=
+COMPILER:=		gcc
+COMPFLAGS:=		-Wall -Werror -Wextra
+STDLIBS:=		m
+NONSTDLIBS:=
 
 # Source Files:
-SRCFILES=\
+SRCFILES:=\
 	point.c
 
 # ------------------------------------------
@@ -35,16 +35,16 @@ SRCFILES=\
 # ------------------------------------------
 
 # Process Variables
-CC=			$(COMPILER)
-CFLAGS=		$(COMPFLAGS) -I $(INCLUDE) -I $(addprefix $(LIBRARIES)/,$(NONSTDLIBS))
-LDFLAGS=	$(foreach lib,$(NONSTDLIBS),-L$(LIBRARIES)/$(lib))
-LDLIBS=\
+CC:=		$(COMPILER)
+CFLAGS:=	$(COMPFLAGS) -I $(INCLUDE) -I $(addprefix $(LIBRARIES)/,$(NONSTDLIBS))
+LDFLAGS:=	$(foreach lib,$(NONSTDLIBS),-L$(LIBRARIES)/$(lib))
+LDLIBS:=\
 		$(foreach lib,$(NONSTDLIBS),-l$(subst lib,,$(lib)))\
 		$(foreach lib,$(STDLIBS),-l$(lib))
-SRCS=		$(addprefix $(SOURCE)/,$(SRCFILES))
-OBJS=		$(SRCS:$(SOURCE)/%.c=$(BUILD)/%.o)
+SRCS:=		$(addprefix $(SOURCE)/,$(SRCFILES))
+OBJS:=		$(SRCS:$(SOURCE)/%.c=$(BUILD)/%.o)
 
-.PHONY: $(BINARIES)$(NAME) $(NAME) all clean fclean re bonus
+.PHONY: $(BINARIES)/$(NAME) $(NAME) all clean fclean re bonus
 
 # Catch Rules
 all: $(BINARIES)/$(NAME)
