@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/03/31 17:21:03 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/03/31 17:32:58 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	get_x_y(t_data *data, char **argv)
 {
 	int		fd;
 	char	*line;
-	
+
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
@@ -61,10 +61,9 @@ void	parse(t_data *data, char **argv)
 	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
 	close(fd);
-//	checkmap(data);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
