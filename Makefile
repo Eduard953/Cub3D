@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/31 03:18:07 by pstengl          ###   ########.fr        #
+#    Updated: 2022/03/31 08:15:17 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ NONSTDLIBS=
 
 # Source Files:
 SRCFILES=\
+	point.c
 
 # ------------------------------------------
 # Do not change anything beyond this point!
