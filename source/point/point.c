@@ -6,11 +6,11 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 08:14:04 by pstengl           #+#    #+#             */
-/*   Updated: 2022/03/31 08:15:00 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/03/31 17:02:02 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <point.h>
+#include "./point.h"
 
 t_point	point_create(double x, double y)
 {

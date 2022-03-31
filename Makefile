@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/31 16:45:51 by pstengl          ###   ########.fr        #
+#    Updated: 2022/03/31 17:01:45 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ NORMFLAGS:=
 
 # Source Files:
 SRCFILES:=\
-	point.c\
+	point/point.c\
 	check_arguments.c\
 
 # ------------------------------------------
