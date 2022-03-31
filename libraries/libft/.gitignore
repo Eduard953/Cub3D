@@ -1,0 +1,9 @@
+build/
+binaries/
+*.o
+*.a
+*.log
+*.dSYM
+*.out
+*.usr
+

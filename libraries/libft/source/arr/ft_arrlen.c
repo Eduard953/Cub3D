@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   ft_arrlen_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/03/31 16:41:14 by pstengl          ###   ########.fr       */
+/*   Created: 2022/01/31 13:06:32 by pstengl           #+#    #+#             */
+/*   Updated: 2022/02/06 15:16:35 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <libft.h>
+#include "libft.h"
 
-void	check_format(int argc, char **argv)
+size_t	ft_arrlen(char **arr)
 {
-	int	len;
+	size_t	len;
 
-	if (argc < 2)
-	{
-		printf("too few args");
-		exit(1);
-	}
-	if (argc > 2)
-	{
-		printf("too many args");
-		exit(1);
-	}
-	len = ftstrlen(argv[1]);
-	if (len < 5 || ft_strnstr(argv[1] + len - 4, ".cub", 4) == NULL)
-	{
-		printf("use .cub map");
-		exit(1);
-	}
+	len = 0;
+	if (!arr)
+		return (len);
+	while (arr[len])
+		len++;
+	return (len);
 }
