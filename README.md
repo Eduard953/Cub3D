@@ -14,9 +14,10 @@
 5. handle errors, norm & leaks
 
 ## Folder Structure:
-- `source/`: C Source Files (.c) with subfolders
-- `include/`: Header Files (.h) with subfolders
+- `source/`: C Source Files (.c) and Private Header files (.h) sorted in subfolders
+- `include/`: Public-Facing Header Files (.h) with subfolders
 - `libraries/`: Libraries (e.g. libft, minilibx)
 - `build/`: Folder for Object Files (.o) created by Makefile at buildtime
 - `data/`: External Data (e.g. Images)
 - `examples/`: Example Files (e.g. Example Maps)
+- `tests/`: Test Files

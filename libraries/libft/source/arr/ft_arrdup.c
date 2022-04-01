@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_arguments.c                                  :+:      :+:    :+:   */
+/*   ft_arrdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/01 14:32:32 by pstengl          ###   ########.fr       */
+/*   Created: 2022/01/31 13:06:03 by pstengl           #+#    #+#             */
+/*   Updated: 2022/04/01 14:34:33 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <libft.h>
+#include "libft.h"
 
-void	check_format(int argc, char **argv)
+char	**ft_arrdup(char **in_arr)
 {
-	int	len;
+	char	**new_arr;
+	int		index;
 
-	if (argc < 2)
+	if (!in_arr)
+		return (NULL);
+	new_arr = ft_calloc(ft_arrlen(in_arr) + 1, sizeof(char *));
+	index = 0;
+	while (in_arr[index])
 	{
-		printf("too few args");
-		exit(1);
+		new_arr[index] = ft_strdup(in_arr[index]);
+		index++;
 	}
-	if (argc > 2)
-	{
-		printf("too many args");
-		exit(1);
-	}
-	len = ft_strlen(argv[1]);
-	if (len < 5 || ft_strnstr(argv[1] + len - 4, ".cub", 4) == NULL)
-	{
-		printf("use .cub map");
-		exit(1);
-	}
+	return (new_arr);
 }
