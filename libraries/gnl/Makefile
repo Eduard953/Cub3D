@@ -6,19 +6,19 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/01 15:51:03 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/01 15:13:40 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Output Name:
-NAME:=			Cub3D
+NAME:=			libgnl
 # Can be 'library' or 'executable'
-TYPE:=			executable
+TYPE:=			library
 
 # Folders:
 BINARIES:=		./binaries
 BUILD:=			./build
-INCLUDE:=
+INCLUDE:=		./include
 SOURCE:=		./source
 LIBRARIES:=		./libraries
 TESTS:=			./tests
@@ -26,14 +26,14 @@ TESTS:=			./tests
 # Other Variables:
 COMPILER:=		gcc
 COMPFLAGS:=		-Wall -Werror -Wextra
-STDLIBS:=		m
-NONSTDLIBS:=	libft gnl
+STDLIBS:=
+NONSTDLIBS:=
 NORMFLAGS:=
 
 # Source Files:
 SRCFILES:=\
-	point/point.c\
-	check_arguments.c\
+		get_next_line.c\
+		get_next_line_utils.c\
 
 # ------------------------------------------
 # Do not change anything beyond this point!

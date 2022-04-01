@@ -1,0 +1,6 @@
+*_test.*
+*.txt
+*.o
+*.a
+42TESTERS-GNL
+test.sh
