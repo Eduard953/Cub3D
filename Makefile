@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
+#    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/01 15:51:03 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/01 15:52:28 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,8 @@ NORMFLAGS:=
 SRCFILES:=\
 	point/point.c\
 	check_arguments.c\
+	parse_helpers.c\
+	parsing.c\
 
 # ------------------------------------------
 # Do not change anything beyond this point!

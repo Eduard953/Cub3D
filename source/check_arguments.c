@@ -6,13 +6,11 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/01 14:32:32 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/01 14:51:32 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <libft.h>
+#include "cub3d.h"
 
 void	check_format(int argc, char **argv)
 {
