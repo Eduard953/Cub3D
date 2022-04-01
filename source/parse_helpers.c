@@ -6,18 +6,23 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/01 14:45:25 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:03:35 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	get_color(char *line)
+#include "cub3d.h"
+
+int	get_color(char **line)
 {
 	int	color;
 
-	color = ft_atoi(line);
+	color = ft_atoi(*line);
 	if (color < 0 || color > 255)
-		error("color value out of rgb range");
-	while (ft_isdigit(*line))
+	{
+		printf("color out of rgb range");
+		exit(1);
+	}
+	while (ft_isdigit(*line[0]))
 		line++;
 	line++;
 	return (color);
@@ -29,7 +34,7 @@ char	*parse_texture(char *line)
 	int		len;
 
 	texture = ft_strtrim(line, " ");
-	len = ftstrlen(texture);
+	len = ft_strlen(texture);
 	if (len < 5 || ft_strnstr(texture + len - 4, ".xpm", 4) == NULL)
 	{
 		printf("use .xpm texture");
@@ -54,7 +59,7 @@ int	parse_color(char *line)
 	return (color);
 }
 
-int	parse_line(t_data *data, char *line)
+int	parse_line(t_data *data, char *line, int *j)
 {
 	int	i;
 
@@ -77,7 +82,7 @@ int	parse_line(t_data *data, char *line)
 		data->map.ceiling_color = parse_color(line + i + 1);
 	else
 	{
-		get_x_y(data, line, &i);
+		get_x_y(data, line, j);
 		return (0);
 	}
 	return (1);

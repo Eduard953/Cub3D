@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/01 14:48:09 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/01 15:06:47 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	init(t_data *data)
 	data->map.size.y = 0;
 }
 
-void	get_x_y(t_data *data, char *line, int i)
+void	get_x_y(t_data *data, char *line, int *i)
 {
 	data->map.size.x = ft_strlen(line);
 	data->map.size.y++;
@@ -80,7 +80,7 @@ void	parse_map(t_data *data, char **argv, int i;)
 		i--;
 		free(data->map.tiles[row]);
 	}
-	while (get_next_line(fd, &data->map.tiles[row])
+	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
 	close(fd);
 }
@@ -88,9 +88,24 @@ void	parse_map(t_data *data, char **argv, int i;)
 int	main(int argc, char **argv)
 {
 	t_data	data;
+	int	i;
+	int	j;
 
 	check_format(argc, argv);
 	init(&data);
 	parse(&data, argv);
+
+	i = 0;
+	while (i < data.map.size.y)
+	{
+		j = 0;
+		while (j < data.map.size.x)
+		{
+			printf("%c", data.map.tiles[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
 	return (0);
 }
