@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/03/31 17:01:45 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/01 14:29:36 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ TYPE:=			executable
 # Folders:
 BINARIES:=		./binaries
 BUILD:=			./build
-INCLUDE:=		./include
+INCLUDE:=
 SOURCE:=		./source
 LIBRARIES:=		./libraries
 TESTS:=			./tests
@@ -43,7 +43,7 @@ SRCFILES:=\
 CC:=		$(COMPILER)
 CFLAGS:=\
 		$(COMPFLAGS)\
-		-I $(INCLUDE)\
+		$(addprefix -I ,$(INCLUDE))\
 		$(addprefix -I $(LIBRARIES)/,$(NONSTDLIBS))\
 		$(addprefix -I $(LIBRARIES)/,$(addsuffix /include,$(NONSTDLIBS)))
 LDFLAGS:=\
@@ -116,7 +116,7 @@ bonus:
 
 # Check the Norm
 norm:
-ifeq ($(NORM),)
+ifeq ($(strip $(NORM)),)
 	$(error "Norminette not installed")
 endif
 	@$(NORM) --version
