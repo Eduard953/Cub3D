@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/01 14:34:06 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/01 15:03:16 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "../libraries/libft/include/libft.h"
 
 typedef struct s_coord
 {
@@ -41,5 +42,7 @@ typedef struct s_data
 	void	*win;
 	t_map	map;
 }	t_data;
+
+void	get_x_y(t_data *data, char *line, int *i);
 
 #endif
