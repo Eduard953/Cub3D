@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/02 14:59:48 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/02 17:53:50 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ TESTS:=			./tests
 # Other Variables:
 COMPILER:=		gcc
 COMPFLAGS:=		-Wall -Werror -Wextra
-STDLIBS:=		m
-NONSTDLIBS:=	libft gnl
+STDLIBS:=		m Xext X11 z
+NONSTDLIBS:=	libft gnl mlx
 NORMFLAGS:=
 
 # Source Files:
@@ -108,7 +108,7 @@ clean:
 fclean: clean
 	@for lib in $(NONSTDLIBS); do \
 		echo "Force Cleaning $$lib";\
-		$(MAKE) -C $(LIBRARIES)/$$lib fclean;\
+		$(MAKE) -C $(LIBRARIES)/$$lib fclean || true;\
 	done
 	@echo "Force Cleaning $(NAME)"
 	$(RM) -r $(BINARIES)

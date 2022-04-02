@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 14:51:23 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/02 17:50:17 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include "../libraries/libft/include/libft.h"
 # include "../libraries/gnl/include/gnl.h"
+# include "../libraries/mlx/mlx.h"
 
 typedef struct s_size
 {
