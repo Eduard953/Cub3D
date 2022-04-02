@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:38:23 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:51:59 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ int	get_color(char **line)
 
 	color = ft_atoi(*line);
 	if (color < 0 || color > 255)
-	{
-		printf("color out of rgb range");
-		exit(1);
-	}
+		error_message("color out of rgb range");
 	while (ft_isdigit(*line[0]))
 		line++;
 	line++;
@@ -36,10 +33,7 @@ char	*parse_texture(char *line)
 	texture = ft_strtrim(line, " ");
 	len = ft_strlen(texture);
 	if (len < 5 || ft_strnstr(texture + len - 4, ".xpm", 4) == NULL)
-	{
-		printf("use .xpm texture");
-		exit(1);
-	}
+		error_message("use .xpm texture");
 	return (texture);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:46:33 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:51:10 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,29 @@ void	init(t_data *data)
 	data->map.size.x = 0;
 	data->map.size.y = 0;
 	data->map.skip = 0;
+}
+
+void	error_message(char *message)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
+	exit(1);
+}
+
+void	check_parse(t_data *data)
+{
+	if (data->map.texture_north == NULL)
+		error_message("no texture north");
+	if (data->map.texture_east == NULL)
+		error_message("no texture east");
+	if (data->map.texture_south == NULL)
+		error_message("no texture south");
+	if (data->map.texture_west == NULL)
+		error_message("no texture west");
+	if (data->map.ceiling_color == -1)
+		error_message("no ceiling color");
+	if (data->map.floor_color == -1)
+		error_message("no floor color");
 }
 
 void	get_x_y(t_data *data, char *line, int fd)
@@ -69,13 +92,13 @@ void	parse(t_data *data, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		write(1, "map not found", 14);
-		exit(-1);
+		error_message("fd error");
 	}
 	while (get_next_line(fd, &line) && parse_line(data, line, fd))
 		free(line);
 	close(fd);
 	parse_map(data, argv);
+	check_parse(data);
 }
 
 int	main(int argc, char **argv)
