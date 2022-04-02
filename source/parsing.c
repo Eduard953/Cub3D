@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 14:13:56 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 14:51:43 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,11 @@ void	parse(t_data *data, char **argv)
 		exit(-1);
 	}
 	i = 0;
-	while (get_next_line(fd, &line) && parse_line(data, line, fd,  &i))
+	while (get_next_line(fd, &line) && parse_line(data, line, fd, &i))
 	{
 		free(line);
 		i++;
-	}	
+	}
 	free(line);
 	close(fd);
 	parse_map(data, argv, i);
@@ -94,7 +94,6 @@ int	main(int argc, char **argv)
 	check_format(argc, argv);
 	init(&data);
 	parse(&data, argv);
-
 	i = 0;
 	while (i < data.map.size.y)
 	{
