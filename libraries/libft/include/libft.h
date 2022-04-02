@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 15:21:27 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/02 14:11:31 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:53:36 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,5 +113,6 @@ int		ft_strcmp(const char *s1, const char *s2);
 void	ft_arrclear(char ***arr, void (*f)(void *content));
 size_t	ft_arrlen(char **arr);
 char	**ft_arrdup(char **in_arr);
+void	ft_arrext(char ***arr, void *content);
 
 #endif
