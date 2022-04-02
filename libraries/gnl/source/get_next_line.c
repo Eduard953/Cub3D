@@ -25,12 +25,12 @@ static int	read_and_prune(char buffer[BUFFER_SIZE], ssize_t read_chars,
 	chars_until_nl = 0;
 	while (chars_until_nl < read_chars && buffer[chars_until_nl] != '\n')
 		chars_until_nl++;
-	if (ft_strext(line, buffer, chars_until_nl) == NULL)
+	if (gnl_strext(line, buffer, chars_until_nl) == NULL)
 		return (-1);
 	hit_newline = 0;
 	if (buffer[chars_until_nl] == '\n')
 		hit_newline = 1;
-	ft_prune_front(buffer, chars_until_nl + 1, BUFFER_SIZE);
+	gnl_prune_front(buffer, chars_until_nl + 1, BUFFER_SIZE);
 	return (hit_newline);
 }
 
@@ -52,7 +52,7 @@ int	get_next_line(int fd, char **line)
 			if (read_chars == 0)
 			{
 				if (*line == NULL)
-					*line = ft_calloc(sizeof(char *), 1);
+					*line = gnl_calloc(sizeof(char *), 1);
 				return (0);
 			}
 		}
