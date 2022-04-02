@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/02 15:16:30 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/02 15:55:32 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ SRCFILES:=\
 	arr/ft_arrlen.c\
 	arr/ft_arrdup.c\
 	arr/ft_arrclear.c\
+	arr/ft_arrext.c\
 
 
 # ------------------------------------------
