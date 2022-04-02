@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/01 15:06:47 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 14:13:56 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ void	init(t_data *data)
 	data->map.texture_east = NULL;
 	data->map.texture_south = NULL;
 	data->map.texture_west = NULL;
-	data->map.ceiling_color = 0;
-	data->map.floor_color = 0;
+	data->map.ceiling_color = -1;
+	data->map.floor_color = -1;
 	data->map.size.x = 0;
 	data->map.size.y = 0;
 }
 
-void	get_x_y(t_data *data, char *line, int *i)
+void	get_x_y(t_data *data, char *line, int fd, int *i)
 {
 	data->map.size.x = ft_strlen(line);
 	data->map.size.y++;
@@ -43,30 +43,7 @@ void	get_x_y(t_data *data, char *line, int *i)
 	}
 }
 
-void	parse(t_data *data, char **argv)
-{
-	int		fd;
-	char	*line;
-	int		i;
-
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-	{
-		write(1, "map not found", 14);
-		exit(-1);
-	}
-	i = 0;
-	while (get_next_line(fd, &line) && parse_line(data, line, &i))
-	{
-		free(line);
-		i++;
-	}	
-	free(line);
-	close(fd);
-	parse_map(data, argv[1], i);
-}
-
-void	parse_map(t_data *data, char **argv, int i;)
+void	parse_map(t_data *data, char **argv, int i)
 {
 	int		row;
 	int		fd;
@@ -85,11 +62,34 @@ void	parse_map(t_data *data, char **argv, int i;)
 	close(fd);
 }
 
+void	parse(t_data *data, char **argv)
+{
+	int		fd;
+	char	*line;
+	int		i;
+
+	fd = open(argv[1], O_RDONLY);
+	if (fd < 0)
+	{
+		write(1, "map not found", 14);
+		exit(-1);
+	}
+	i = 0;
+	while (get_next_line(fd, &line) && parse_line(data, line, fd,  &i))
+	{
+		free(line);
+		i++;
+	}	
+	free(line);
+	close(fd);
+	parse_map(data, argv, i);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	check_format(argc, argv);
 	init(&data);

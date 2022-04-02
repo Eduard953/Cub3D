@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
+/*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:14:34 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/01 15:14:35 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/02 14:36:13 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
