@@ -1,5 +1,5 @@
 # Cub3D
-![norminette](https://github.com/Eduard953/Cub3D/workflows/Norm-Check/badge.svg)
+![norminette](https://github.com/Eduard953/Cub3D/workflows/Norm-Check/badge.svg) ![build](https://github.com/Eduard953/Cub3D/workflows/Build/badge.svg)
 
 ## Todo:
 
