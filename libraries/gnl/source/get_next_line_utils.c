@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include <stdlib.h>
 
-void	ft_bzero(void	*space, size_t size)
+void	gnl_bzero(void	*space, size_t size)
 {
 	size_t	counter;
 
@@ -23,7 +23,7 @@ void	ft_bzero(void	*space, size_t size)
 	}
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*gnl_calloc(size_t nmemb, size_t size)
 {
 	size_t	final_size;
 	void	*space;
@@ -35,11 +35,11 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	space = malloc(final_size);
 	if (space == NULL)
 		return (NULL);
-	ft_bzero(space, final_size);
+	gnl_bzero(space, final_size);
 	return (space);
 }
 
-size_t	ft_strlen(char	*str)
+size_t	gnl_strlen(char	*str)
 {
 	size_t	len;
 
@@ -51,16 +51,16 @@ size_t	ft_strlen(char	*str)
 	return (len);
 }
 
-char	*ft_strext(char **base, char *ext, size_t size)
+char	*gnl_strext(char **base, char *ext, size_t size)
 {
 	char	*temp;
 	size_t	count;
 	size_t	base_len;
 
-	base_len = ft_strlen(*base);
-	if (ft_strlen(ext) < size)
-		size = ft_strlen(ext);
-	temp = ft_calloc(sizeof(char *), base_len + size + 1);
+	base_len = gnl_strlen(*base);
+	if (gnl_strlen(ext) < size)
+		size = gnl_strlen(ext);
+	temp = gnl_calloc(sizeof(char *), base_len + size + 1);
 	if (temp == NULL)
 		return (NULL);
 	count = 0;
@@ -80,7 +80,7 @@ char	*ft_strext(char **base, char *ext, size_t size)
 	return (temp);
 }
 
-void	ft_prune_front(void *space, size_t from, size_t max_size)
+void	gnl_prune_front(void *space, size_t from, size_t max_size)
 {
 	size_t	count;
 

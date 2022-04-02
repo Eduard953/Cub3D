@@ -15,10 +15,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-void	*ft_calloc(size_t nmemb, size_t size);
-size_t	ft_strlen(char *str);
-char	*ft_strext(char **base, char *ext, size_t size);
-void	ft_bzero(void *space, size_t size);
-void	ft_prune_front(void *space, size_t from, size_t max_size);
+void	*gnl_calloc(size_t nmemb, size_t size);
+size_t	gnl_strlen(char *str);
+char	*gnl_strext(char **base, char *ext, size_t size);
+void	gnl_bzero(void *space, size_t size);
+void	gnl_prune_front(void *space, size_t from, size_t max_size);
 
 #endif
