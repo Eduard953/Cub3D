@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:38:04 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:56:14 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,6 @@ typedef struct s_data
 void	get_x_y(t_data *data, char *line, int fd);
 int		parse_line(t_data *data, char *line, int fd);
 void	check_format(int argc, char **argv);
+void	error_message(char *message);
 
 #endif
