@@ -6,7 +6,7 @@
 #    By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/01 15:13:40 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/02 15:16:44 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,11 +60,6 @@ NORM:=		$(shell which norminette)
 # If we are compiling a library, add .a to the name
 ifeq ($(TYPE),library)
 	NAME:= $(NAME).a
-endif
-
-# Print a Warning if we don't have norminette installed
-ifeq ($(NORM),)
-	$(warning "Norminette not installed")
 endif
 
 .PHONY: all clean fclean re bonus norm test memtest
