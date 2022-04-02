@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/01 15:52:28 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/02 14:59:48 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,29 +83,34 @@ $(OBJS): $(BUILD)%.o : $(SOURCE)%.c
 # Main Build Rule
 $(BINARIES)/$(NAME): $(OBJS)
 	@for lib in $(NONSTDLIBS); do\
+		echo "Compiling $$lib";\
 		$(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib;\
 	done
 	mkdir -p $(BINARIES)
 ifeq ($(TYPE),library)
-	@echo "Creating a Library"
+	@echo "Creating Library $(NAME)"
 	$(AR) $(ARFLAGS) $(BINARIES)/$(NAME) $(OBJS)
 else
-	@echo "Compiling an executable"
+	@echo "Compiling executable $(NAME)"
 	$(CC) $(CFLAGS) $(OBJS) -o $(BINARIES)/$(NAME) $(LDFLAGS) $(LDLIBS)
 endif
 
 # Clean up Objects
 clean:
 	@for lib in $(NONSTDLIBS); do \
+		echo "Cleaning $$lib";\
 		$(MAKE) -C $(LIBRARIES)/$$lib clean;\
 	done
+	@echo "Cleaning $(NAME)"
 	$(RM) -r $(BUILD)
 
 # Clean up Executables and static libraries
 fclean: clean
 	@for lib in $(NONSTDLIBS); do \
+		echo "Force Cleaning $$lib";\
 		$(MAKE) -C $(LIBRARIES)/$$lib fclean;\
 	done
+	@echo "Force Cleaning $(NAME)"
 	$(RM) -r $(BINARIES)
 
 # Clean the re-compile
