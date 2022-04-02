@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 14:51:43 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/02 15:19:00 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,17 @@ void	init(t_data *data)
 	data->map.size.y = 0;
 }
 
-void	get_x_y(t_data *data, char *line, int fd, int *i)
+void	get_x_y(t_data *data, char *line, int fd)
 {
 	data->map.size.x = ft_strlen(line);
 	data->map.size.y++;
 	free(line);
-	i++;
 	while (get_next_line(fd, &line))
 	{
 		if (ft_strlen(line) > data->map.size.x)
 			data->map.size.x = ft_strlen(line);
 		data->map.size.y++;
 		free(line);
-		i++;
 	}
 }
 
@@ -55,7 +53,6 @@ void	parse_map(t_data *data, char **argv, int i)
 	while (get_next_line(fd, &data->map.tiles[row]) && i > 0)
 	{
 		i--;
-		free(data->map.tiles[row]);
 	}
 	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
@@ -76,11 +73,7 @@ void	parse(t_data *data, char **argv)
 	}
 	i = 0;
 	while (get_next_line(fd, &line) && parse_line(data, line, fd, &i))
-	{
 		free(line);
-		i++;
-	}
-	free(line);
 	close(fd);
 	parse_map(data, argv, i);
 }
