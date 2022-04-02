@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/02 17:53:50 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/02 18:19:14 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -84,6 +84,11 @@ $(OBJS): $(BUILD)%.o : $(SOURCE)%.c
 $(BINARIES)/$(NAME): $(OBJS)
 	@for lib in $(NONSTDLIBS); do\
 		echo "Compiling $$lib";\
+		if [ -f $(LIBRARIES)/$$lib/configure ]; then\
+			cd $(LIBRARIES)/$$lib;\
+			./configure;\
+			cd ../../;\
+		fi;\
 		$(MAKE) -j $(nprocs) -C $(LIBRARIES)/$$lib;\
 	done
 	mkdir -p $(BINARIES)
