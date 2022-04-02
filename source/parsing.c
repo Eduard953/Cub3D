@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:19:00 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:46:33 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init(t_data *data)
 	data->map.floor_color = -1;
 	data->map.size.x = 0;
 	data->map.size.y = 0;
+	data->map.skip = 0;
 }
 
 void	get_x_y(t_data *data, char *line, int fd)
@@ -39,9 +40,10 @@ void	get_x_y(t_data *data, char *line, int fd)
 		data->map.size.y++;
 		free(line);
 	}
+	data->map.size.y++;
 }
 
-void	parse_map(t_data *data, char **argv, int i)
+void	parse_map(t_data *data, char **argv)
 {
 	int		row;
 	int		fd;
@@ -50,9 +52,9 @@ void	parse_map(t_data *data, char **argv, int i)
 	data->map.tiles = malloc((data->map.size.y + 1) * sizeof(char *));
 	data->map.tiles[data->map.size.y] = NULL;
 	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &data->map.tiles[row]) && i > 0)
+	while (get_next_line(fd, &data->map.tiles[row]) && data->map.skip >= 0)
 	{
-		i--;
+		data->map.skip--;
 	}
 	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
@@ -63,7 +65,6 @@ void	parse(t_data *data, char **argv)
 {
 	int		fd;
 	char	*line;
-	int		i;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
@@ -71,11 +72,10 @@ void	parse(t_data *data, char **argv)
 		write(1, "map not found", 14);
 		exit(-1);
 	}
-	i = 0;
-	while (get_next_line(fd, &line) && parse_line(data, line, fd, &i))
+	while (get_next_line(fd, &line) && parse_line(data, line, fd))
 		free(line);
 	close(fd);
-	parse_map(data, argv, i);
+	parse_map(data, argv);
 }
 
 int	main(int argc, char **argv)
@@ -88,6 +88,12 @@ int	main(int argc, char **argv)
 	init(&data);
 	parse(&data, argv);
 	i = 0;
+	printf("%s\n", data.map.texture_east);
+	printf("%s\n", data.map.texture_west);
+	printf("%s\n", data.map.texture_north);
+	printf("%s\n", data.map.texture_south);
+	printf("%d\n", data.map.ceiling_color);
+	printf("%d\n", data.map.floor_color);
 	while (i < data.map.size.y)
 	{
 		j = 0;

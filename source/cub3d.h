@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:14:54 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:38:04 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_map {
 	char	*texture_west;
 	int		ceiling_color;
 	int		floor_color;
+	int		skip;
 	t_size	size;
 }	t_map;
 
@@ -45,7 +46,7 @@ typedef struct s_data
 }	t_data;
 
 void	get_x_y(t_data *data, char *line, int fd);
-int		parse_line(t_data *data, char *line, int fd, int *j);
+int		parse_line(t_data *data, char *line, int fd);
 void	check_format(int argc, char **argv);
 
 #endif

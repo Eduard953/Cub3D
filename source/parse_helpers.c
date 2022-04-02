@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:17:01 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/02 15:38:23 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	parse_color(char *line)
 	return (color);
 }
 
-int	parse_line(t_data *data, char *line, int fd, int *j)
+int	parse_line(t_data *data, char *line, int fd)
 {
 	int	i;
 
@@ -85,6 +85,6 @@ int	parse_line(t_data *data, char *line, int fd, int *j)
 		get_x_y(data, line, fd);
 		return (0);
 	}
-	j++;
+	data->map.skip++;
 	return (1);
 }
