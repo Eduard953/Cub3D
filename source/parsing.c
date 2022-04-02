@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 14:51:43 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/02 15:51:10 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,48 @@ void	init(t_data *data)
 	data->map.floor_color = -1;
 	data->map.size.x = 0;
 	data->map.size.y = 0;
+	data->map.skip = 0;
 }
 
-void	get_x_y(t_data *data, char *line, int fd, int *i)
+void	error_message(char *message)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
+	exit(1);
+}
+
+void	check_parse(t_data *data)
+{
+	if (data->map.texture_north == NULL)
+		error_message("no texture north");
+	if (data->map.texture_east == NULL)
+		error_message("no texture east");
+	if (data->map.texture_south == NULL)
+		error_message("no texture south");
+	if (data->map.texture_west == NULL)
+		error_message("no texture west");
+	if (data->map.ceiling_color == -1)
+		error_message("no ceiling color");
+	if (data->map.floor_color == -1)
+		error_message("no floor color");
+}
+
+void	get_x_y(t_data *data, char *line, int fd)
 {
 	data->map.size.x = ft_strlen(line);
 	data->map.size.y++;
 	free(line);
-	i++;
 	while (get_next_line(fd, &line))
 	{
 		if (ft_strlen(line) > data->map.size.x)
 			data->map.size.x = ft_strlen(line);
 		data->map.size.y++;
 		free(line);
-		i++;
 	}
+	data->map.size.y++;
 }
 
-void	parse_map(t_data *data, char **argv, int i)
+void	parse_map(t_data *data, char **argv)
 {
 	int		row;
 	int		fd;
@@ -52,10 +75,9 @@ void	parse_map(t_data *data, char **argv, int i)
 	data->map.tiles = malloc((data->map.size.y + 1) * sizeof(char *));
 	data->map.tiles[data->map.size.y] = NULL;
 	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &data->map.tiles[row]) && i > 0)
+	while (get_next_line(fd, &data->map.tiles[row]) && data->map.skip >= 0)
 	{
-		i--;
-		free(data->map.tiles[row]);
+		data->map.skip--;
 	}
 	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
@@ -66,23 +88,17 @@ void	parse(t_data *data, char **argv)
 {
 	int		fd;
 	char	*line;
-	int		i;
 
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		write(1, "map not found", 14);
-		exit(-1);
+		error_message("fd error");
 	}
-	i = 0;
-	while (get_next_line(fd, &line) && parse_line(data, line, fd, &i))
-	{
+	while (get_next_line(fd, &line) && parse_line(data, line, fd))
 		free(line);
-		i++;
-	}
-	free(line);
 	close(fd);
-	parse_map(data, argv, i);
+	parse_map(data, argv);
+	check_parse(data);
 }
 
 int	main(int argc, char **argv)
@@ -95,6 +111,12 @@ int	main(int argc, char **argv)
 	init(&data);
 	parse(&data, argv);
 	i = 0;
+	printf("%s\n", data.map.texture_east);
+	printf("%s\n", data.map.texture_west);
+	printf("%s\n", data.map.texture_north);
+	printf("%s\n", data.map.texture_south);
+	printf("%d\n", data.map.ceiling_color);
+	printf("%d\n", data.map.floor_color);
 	while (i < data.map.size.y)
 	{
 		j = 0;
