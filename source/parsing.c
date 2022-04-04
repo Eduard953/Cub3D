@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:51:10 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:25:26 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	check_parse(t_data *data)
 		error_message("no floor color");
 }
 
-void	get_x_y(t_data *data, char *line, int fd)
+int	get_x_y(t_data *data, char *line, int fd)
 {
 	data->map.size.x = ft_strlen(line);
 	data->map.size.y++;
@@ -64,6 +64,7 @@ void	get_x_y(t_data *data, char *line, int fd)
 		free(line);
 	}
 	data->map.size.y++;
+	return (0);
 }
 
 void	parse_map(t_data *data, char **argv)
@@ -110,6 +111,7 @@ int	main(int argc, char **argv)
 	check_format(argc, argv);
 	init(&data);
 	parse(&data, argv);
+	check_map(&data);
 	i = 0;
 	printf("%s\n", data.map.texture_east);
 	printf("%s\n", data.map.texture_west);
