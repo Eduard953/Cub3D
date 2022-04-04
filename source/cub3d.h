@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/04 19:25:45 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:28:27 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ typedef struct s_data
 	t_map	map;
 }	t_data;
 
-void	get_x_y(t_data *data, char *line, int fd);
 int		parse_line(t_data *data, char *line, int fd);
 void	check_format(int argc, char **argv);
 void	error_message(char *message);
