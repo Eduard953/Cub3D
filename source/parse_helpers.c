@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/02 15:51:59 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/04 19:26:05 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int	parse_line(t_data *data, char *line, int fd)
 	else if (line[i] == 'C')
 		data->map.ceiling_color = parse_color(line + i + 1);
 	else
-	{
-		get_x_y(data, line, fd);
-		return (0);
-	}
+		return (get_x_y(data, line, fd));
 	data->map.skip++;
 	return (1);
 }
