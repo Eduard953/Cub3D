@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/02 18:19:14 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/04 13:32:19 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ TESTS:=			./tests
 # Other Variables:
 COMPILER:=		gcc
 COMPFLAGS:=		-Wall -Werror -Wextra
-STDLIBS:=		m Xext X11 z
+LIBPATHS:=		/usr/X11
+STDLIBS:=		m X11 Xext z
 NONSTDLIBS:=	libft gnl mlx
 NORMFLAGS:=
 
@@ -47,10 +48,12 @@ CFLAGS:=\
 		$(COMPFLAGS)\
 		$(addprefix -I ,$(INCLUDE))\
 		$(addprefix -I $(LIBRARIES)/,$(NONSTDLIBS))\
-		$(addprefix -I $(LIBRARIES)/,$(addsuffix /include,$(NONSTDLIBS)))
+		$(addprefix -I $(LIBRARIES)/,$(addsuffix /include,$(NONSTDLIBS)))\
+		$(addprefix -I ,$(addsuffix /include,$(LIBPATHS)))
 LDFLAGS:=\
 		$(addprefix -L $(LIBRARIES)/,$(NONSTDLIBS))\
-		$(addprefix -L $(LIBRARIES)/,$(addsuffix /binaries,$(NONSTDLIBS)))
+		$(addprefix -L $(LIBRARIES)/,$(addsuffix /binaries,$(NONSTDLIBS)))\
+		$(addprefix -L ,$(addsuffix /lib,$(LIBPATHS)))
 LDLIBS:=\
 		$(addprefix -l,$(subst lib,,$(NONSTDLIBS)))\
 		$(addprefix -l,$(STDLIBS))

@@ -1,6 +1,24 @@
 # Cub3D
 ![norminette](https://github.com/Eduard953/Cub3D/workflows/Norm-Check/badge.svg)
 
+## Requirements:
+
+#### Linux:
+```bash
+sudo apt update && sudo apt install xorg libxext-dev zlib1g-dev libbsd-dev
+```
+#### MacOS:
+```bash
+brew install Xquartz
+reboot
+```
+#### School IMacs:
+- Go to 'Managed Software Center'
+- Search for 'Xquartz'
+- Install 'Xquartz'
+- Reboot the IMac (or at least click on the Button and log in again)
+
+
 ## Todo:
 
 1. input validation
