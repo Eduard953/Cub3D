@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 12:38:16 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/05 12:52:34 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	check_tiles(t_data *data)
 		{
 			if (ft_strchr("01NSEW ", data->map.tiles[i][j]) == NULL)
 				error_message("invalid map");
-			else if (ft_strchr("NSEW", data->map.tiles[i][j]))
+			else if (ft_strchr("NSEW", data->map.tiles[i][j])
+				&& data->map.tiles[i][j] != '\0')
 				p++;
 			j++;
 		}
@@ -59,8 +60,8 @@ void	check_tiles(t_data *data)
 		error_message("invalid amount of spawning points");
 }
 
-check_map(t_data *data)
+void	check_map(t_data *data)
 {
 	check_tiles(data);
-	check_walls(data);
+//	check_walls(data);
 }
