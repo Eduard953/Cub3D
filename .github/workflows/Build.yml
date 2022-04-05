@@ -2,14 +2,17 @@ name: Build
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, 27-fix-the-build-pipeline ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: make
+    - name: Install libbsd-dev
+      run: sudo apt-get install libbsd-dev -y
+    - name: Compile the executable
       run: make
