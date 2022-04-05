@@ -17,9 +17,8 @@ jobs:
       uses: actions/cache@v3
       with:
         path: "**/*.o"
-        key: objs-${{ github.ref_name }}-${{ hashFiles('**/package-lock.json') }}
+        key: objs-${{ github.ref_name }}
         restore-keys: |
-          objs-${{ github.ref_name }}-
           objs-
     - name: make
       run: make
