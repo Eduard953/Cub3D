@@ -5,6 +5,7 @@ on:
     branches: [ main, 27-fix-the-build-pipeline ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,11 +17,13 @@ jobs:
     - name: Cache build files
       uses: actions/cache@v3
       with:
-        path: "**/*.o"
+        path: |
+          build
+          libraries/libft/build
+          libraries/get_next_line/build
+          libraries/mlx/*.o
         key: objs-${{ github.ref_name }}
         restore-keys: |
           objs-
-    - name: Print manifest file
-      run: cat manifest.txt
     - name: make
       run: make
