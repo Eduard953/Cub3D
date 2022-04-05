@@ -6,27 +6,11 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 11:09:59 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:47:17 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	init(t_data *data)
-{
-	data->mlx = NULL;
-	data->win = NULL;
-	data->map.tiles = NULL;
-	data->map.texture_north = NULL;
-	data->map.texture_east = NULL;
-	data->map.texture_south = NULL;
-	data->map.texture_west = NULL;
-	data->map.ceiling_color = -1;
-	data->map.floor_color = -1;
-	data->map.size.x = 0;
-	data->map.size.y = 0;
-	data->map.skip = 0;
-}
 
 void	error_message(char *message)
 {
@@ -49,6 +33,21 @@ void	check_parse(t_data *data)
 		error_message("no ceiling color");
 	if (data->map.floor_color == -1)
 		error_message("no floor color");
+}
+
+int	parse_player(t_data *data, size_t i, size_t j)
+{
+	if (data->map.tiles[i][j] == 'N')
+		data->ash.view_angle = 0;
+	else if (data->map.tiles[i][j] == 'W')
+		data->ash.view_angle = 90;
+	else if (data->map.tiles[i][j] == 'S')
+		data->ash.view_angle = 180;
+	else if (data->map.tiles[i][j] == 'E')
+		data->ash.view_angle = 270;
+	data->ash.pos.x = j + 0.0;
+	data->ash.pos.y = i + 0.0;
+	return (1);
 }
 
 int	get_x_y(t_data *data, char *line, int fd)
@@ -99,35 +98,4 @@ void	parse(t_data *data, char **argv)
 	close(fd);
 	parse_map(data, argv);
 	check_parse(data);
-}
-
-int	main(int argc, char **argv)
-{
-	t_data	data;
-	size_t	i;
-	size_t	j;
-
-	check_format(argc, argv);
-	init(&data);
-	parse(&data, argv);
-	check_map(&data);
-	i = 0;
-	printf("%s\n", data.map.texture_east);
-	printf("%s\n", data.map.texture_west);
-	printf("%s\n", data.map.texture_north);
-	printf("%s\n", data.map.texture_south);
-	printf("%d\n", data.map.ceiling_color);
-	printf("%d\n", data.map.floor_color);
-	while (i < data.map.size.y)
-	{
-		j = 0;
-		while (j < data.map.size.x)
-		{
-			printf("%c", data.map.tiles[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-	return (0);
 }

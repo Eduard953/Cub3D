@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 14:10:21 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:35:00 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	check_map(t_data *data)
 				error_message("invalid map");
 			else if (ft_strchr("NSEW", data->map.tiles[i][j])
 				&& data->map.tiles[i][j] != '\0')
-				p++;
+				p += parse_player(data, i, j);
 			j++;
 		}
 		i++;
