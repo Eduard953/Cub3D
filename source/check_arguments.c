@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 12:52:34 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:10:21 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,66 @@ void	check_format(int argc, char **argv)
 	}
 }
 
-void	check_tiles(t_data *data)
+void	check_top_bottom(t_data *data)
+{
+	size_t	i;
+
+	i = 0;
+	while (data->map.tiles[0][i] != '\0')
+	{
+		if (ft_strchr("1 ", data->map.tiles[0][i]) == NULL)
+			error_message("top not surrounded by walls");
+		i++;
+	}
+	i = 0;
+	while (data->map.tiles[data->map.size.y - 1][i] != '\0')
+	{
+		if (ft_strchr("1 ", data->map.tiles[data->map.size.y - 1][i]) == NULL)
+			error_message("bottom not surrounded by walls");
+		i++;
+	}
+}
+
+void	check_spaces(t_data *data, size_t i, size_t j)
+{
+	if (data->map.tiles[i - 1][j] == ' ')
+		error_message("map not surrounded by walls");
+	if (data->map.tiles[i + 1][j] == ' ')
+		error_message("map not surrounded by walls");
+	if (data->map.tiles[i][j - 1] == ' ')
+		error_message("map not surrounded by walls");
+	if (data->map.tiles[i][j + 1] == ' ')
+		error_message("map not surrounded by walls");
+}
+
+void	check_walls(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	check_top_bottom(data);
+	while (i < data->map.size.y)
+	{
+		j = 0;
+		while (data->map.tiles[i][j] == ' ')
+			j++;
+		if (data->map.tiles[i][j] != '1')
+			error_message("map not surrounded by walls");
+		while (data->map.tiles[i][j])
+		{
+			if (ft_strchr("NSEW0", data->map.tiles[i][j])
+				&& data->map.tiles[i][j] != '\0')
+				check_spaces(data, i, j);
+			j++;
+		}
+		if (data->map.tiles[i][j - 1] != '1')
+			error_message("map not surrounded by walls");
+		i++;
+	}
+}
+
+void	check_map(t_data *data)
 {
 	size_t	i;
 	size_t	j;
@@ -58,10 +117,5 @@ void	check_tiles(t_data *data)
 	}
 	if (p != 1)
 		error_message("invalid amount of spawning points");
-}
-
-void	check_map(t_data *data)
-{
-	check_tiles(data);
-//	check_walls(data);
+	check_walls(data);
 }
