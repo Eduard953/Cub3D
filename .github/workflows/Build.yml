@@ -13,5 +13,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install libbsd-dev
       run: sudo apt-get install libbsd-dev -y
+    - name: Cache build files
+      uses: actions/cache@v3
+      with:
+        path: "**/*.o"
+        key: objs-${{ GITHUB_HEAD_REF }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          objs-${{ GITHUB_HEAD_REF }}-
+          objs-
     - name: make
       run: make
