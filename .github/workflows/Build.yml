@@ -19,7 +19,7 @@ jobs:
         path: "**/*.o"
         key: objs-${{ github.ref_name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          objs-${{ GITHUB_HEAD_REF }}-
+          objs-${{ github.ref_name }}-
           objs-
     - name: make
       run: make
