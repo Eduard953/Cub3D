@@ -26,6 +26,6 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-objs-
     - name: DEBUG
-      run: ls **/*.o
+      run: "ls -l **/*.o || true"
     - name: Compile the executable
       run: make
