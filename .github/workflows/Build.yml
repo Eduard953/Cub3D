@@ -18,12 +18,14 @@ jobs:
       uses: actions/cache@v3
       with:
         path: |
-          ${{ github.workspace}}/build/*.o
-          ${{ github.workspace}}/libraries/libft/build/*.o
-          ${{ github.workspace}}/libraries/get_next_line/build/*.o
-          ${{ github.workspace}}/libraries/mlx/obj/*.o
-        key: objs-${{ github.ref_name }}
+          build
+          libraries/libft/build
+          libraries/get_next_line/build
+          libraries/mlx/obj
+        key: ${{ runner.os }}-objs-${{ github.ref_name }}
         restore-keys: |
-          objs-
-    - name: make
+          ${{ runner.os }}-objs-
+    - name: DEBUG
+      run: ls **/*.o
+    - name: Compile the executable
       run: make
