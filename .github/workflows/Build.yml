@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ main, 27-fix-the-build-pipeline ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
