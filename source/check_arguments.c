@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 14:08:34 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:10:21 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,33 +32,6 @@ void	check_format(int argc, char **argv)
 		printf("use .cub map");
 		exit(1);
 	}
-}
-
-void	check_tiles(t_data *data)
-{
-	size_t	i;
-	size_t	j;
-	size_t	p;
-
-	i = 0;
-	p = 0;
-	while (i < data->map.size.y)
-	{
-		j = 0;
-		while (j < data->map.size.x)
-		{
-			if (ft_strchr("01NSEW ", data->map.tiles[i][j]) == NULL)
-				error_message("invalid map");
-			else if (ft_strchr("NSEW", data->map.tiles[i][j])
-				&& data->map.tiles[i][j] != '\0')
-				p++;
-			j++;
-		}
-		i++;
-	}
-	if (p != 1)
-		error_message("invalid amount of spawning points");
-	check_walls(data);
 }
 
 void	check_top_bottom(t_data *data)
@@ -118,4 +91,31 @@ void	check_walls(t_data *data)
 			error_message("map not surrounded by walls");
 		i++;
 	}
+}
+
+void	check_map(t_data *data)
+{
+	size_t	i;
+	size_t	j;
+	size_t	p;
+
+	i = 0;
+	p = 0;
+	while (i < data->map.size.y)
+	{
+		j = 0;
+		while (j < data->map.size.x)
+		{
+			if (ft_strchr("01NSEW ", data->map.tiles[i][j]) == NULL)
+				error_message("invalid map");
+			else if (ft_strchr("NSEW", data->map.tiles[i][j])
+				&& data->map.tiles[i][j] != '\0')
+				p++;
+			j++;
+		}
+		i++;
+	}
+	if (p != 1)
+		error_message("invalid amount of spawning points");
+	check_walls(data);
 }
