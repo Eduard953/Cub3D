@@ -18,10 +18,10 @@ jobs:
       uses: actions/cache@v3
       with:
         path: |
-          build
-          libraries/libft/build
-          libraries/get_next_line/build
-          libraries/mlx/*.o
+          ${{ github.workspace}}/build/*.o
+          ${{ github.workspace}}/libraries/libft/build/*.o
+          ${{ github.workspace}}/libraries/get_next_line/build/*.o
+          ${{ github.workspace}}/libraries/mlx/obj/*.o
         key: objs-${{ github.ref_name }}
         restore-keys: |
           objs-
