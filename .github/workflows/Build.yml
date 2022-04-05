@@ -20,5 +20,7 @@ jobs:
         key: objs-${{ github.ref_name }}
         restore-keys: |
           objs-
+    - name: Print manifest file
+      run: cat manifest.txt
     - name: make
       run: make
