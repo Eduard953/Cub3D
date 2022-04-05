@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 14:05:38 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/05 14:08:34 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ void	check_tiles(t_data *data)
 	}
 	if (p != 1)
 		error_message("invalid amount of spawning points");
+	check_walls(data);
 }
 
 void	check_top_bottom(t_data *data)
 {
 	size_t	i;
-	
+
 	i = 0;
 	while (data->map.tiles[0][i] != '\0')
 	{
@@ -117,10 +118,4 @@ void	check_walls(t_data *data)
 			error_message("map not surrounded by walls");
 		i++;
 	}
-}
-
-void	check_map(t_data *data)
-{
-	check_tiles(data);
-	check_walls(data);
 }
