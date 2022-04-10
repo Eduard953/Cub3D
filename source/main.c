@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 14:49:35 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:20:26 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,16 @@ void	init(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	size_t	i;
-	size_t	j;
 
 	check_format(argc, argv);
 	init(&data);
 	parse(&data, argv);
 	check_map(&data);
-	i = 0;
-	printf("%s\n", data.map.texture_east);
-	printf("%s\n", data.map.texture_west);
-	printf("%s\n", data.map.texture_north);
-	printf("%s\n", data.map.texture_south);
-	printf("%d\n", data.map.ceiling_color);
-	printf("%d\n", data.map.floor_color);
-	printf("%f\n", data.ash.view_angle);
-	printf("%f\n", data.ash.pos.x);
-	printf("%f\n", data.ash.pos.y);
-	while (i < data.map.size.y)
-	{
-		j = 0;
-		while (j < data.map.size.x)
-		{
-			printf("%c", data.map.tiles[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, data.map.size.x * 32,
+			data.map.size.y * 32, "CUB3D");
+	mlx_hook(data.win, 17, 0, red_cross, &data);
+	mlx_hook(data.win, 2, 0, keys, &data);
+	mlx_loop(data.mlx);
 	return (0);
 }

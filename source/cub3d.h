@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 14:48:20 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/10 16:21:16 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ void	check_map(t_data *data);
 int		get_x_y(t_data *data, char *line, int fd);
 int		parse_player(t_data *data, size_t i, size_t j);
 void	parse(t_data *data, char **argv);
+int		red_cross(t_data *data);
+int		keys(int key, t_data *data);
 
 #endif
