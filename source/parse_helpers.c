@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/04 19:26:05 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/10 19:30:00 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	get_color(char **line)
 	color = ft_atoi(*line);
 	if (color < 0 || color > 255)
 		error_message("color out of rgb range");
-	while (ft_isdigit(*line[0]))
-		line++;
-	line++;
+	while (ft_isdigit(**line))
+		(*line)++;
+	(*line)++;
 	return (color);
 }
 
