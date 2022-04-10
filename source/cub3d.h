@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 10:19:08 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/05 14:48:20 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,18 @@ typedef struct s_size
 	size_t	y;
 }	t_size;
 
+typedef struct s_point
+{
+	double	x;
+	double	y;
+}	t_point;
+
+typedef struct s_player 
+{
+    t_point	pos;
+    double	view_angle;
+}	t_player;
+
 typedef struct s_map {
 	char	**tiles;
 	char	*texture_north;
@@ -41,15 +53,19 @@ typedef struct s_map {
 
 typedef struct s_data
 {
-	void	*mlx;
-	void	*win;
-	t_map	map;
+	void		*mlx;
+	void		*win;
+	t_map		map;
+	t_player	ash;
 }	t_data;
+
 
 int		parse_line(t_data *data, char *line, int fd);
 void	check_format(int argc, char **argv);
 void	error_message(char *message);
 void	check_map(t_data *data);
 int		get_x_y(t_data *data, char *line, int fd);
+int		parse_player(t_data *data, size_t i, size_t j);
+void	parse(t_data *data, char **argv);
 
 #endif
