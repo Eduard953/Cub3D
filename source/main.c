@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/10 16:20:26 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/10 19:33:53 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	main(int argc, char **argv)
 	data.mlx = mlx_init();
 	data.win = mlx_new_window(data.mlx, data.map.size.x * 32,
 			data.map.size.y * 32, "CUB3D");
-	mlx_hook(data.win, 17, 0, red_cross, &data);
-	mlx_hook(data.win, 2, 0, keys, &data);
+	mlx_hook(data.win, 17, 0L, red_cross, &data);
+	mlx_hook(data.win, 2, 1L<<0, keys, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }
