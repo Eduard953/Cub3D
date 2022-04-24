@@ -6,11 +6,12 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/10 19:33:53 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/24 11:54:13 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "ray/ray.h"
 
 void	init(t_data *data)
 {
@@ -31,6 +32,7 @@ void	init(t_data *data)
 int	main(int argc, char **argv)
 {
 	t_data	data;
+	t_ray	ray;
 
 	check_format(argc, argv);
 	init(&data);
@@ -40,7 +42,9 @@ int	main(int argc, char **argv)
 	data.win = mlx_new_window(data.mlx, data.map.size.x * 32,
 			data.map.size.y * 32, "CUB3D");
 	mlx_hook(data.win, 17, 0L, red_cross, &data);
-	mlx_hook(data.win, 2, 1L<<0, keys, &data);
+	mlx_hook(data.win, 2, 1L << 0, keys, &data);
+	ray = ray_cast(data.map, data.ash.pos, 326);
+	printf("side: %d, distance %f\n", ray.side, ray.distance);
 	mlx_loop(data.mlx);
 	return (0);
 }

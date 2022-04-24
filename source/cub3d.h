@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
+/*																			*/
+/*														:::	  ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 16:24:05 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/10 16:21:16 by ebeiline         ###   ########.fr       */
-/*                                                                            */
+/*													+:+ +:+		 +:+	 */
+/*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
+/*												+#+#+#+#+#+   +#+		   */
+/*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
+/*   Updated: 2022/04/24 11:45:51 by pstengl          ###   ########.fr       */
+/*																			*/
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "point/point.h"
 # include "../libraries/libft/include/libft.h"
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
@@ -27,16 +28,10 @@ typedef struct s_size
 	size_t	y;
 }	t_size;
 
-typedef struct s_point
+typedef struct s_player
 {
-	double	x;
-	double	y;
-}	t_point;
-
-typedef struct s_player 
-{
-    t_point	pos;
-    double	view_angle;
+	t_point	pos;
+	double	view_angle;
 }	t_player;
 
 typedef struct s_map {
@@ -59,7 +54,6 @@ typedef struct s_data
 	t_player	ash;
 }	t_data;
 
-
 int		parse_line(t_data *data, char *line, int fd);
 void	check_format(int argc, char **argv);
 void	error_message(char *message);
@@ -69,5 +63,6 @@ int		parse_player(t_data *data, size_t i, size_t j);
 void	parse(t_data *data, char **argv);
 int		red_cross(t_data *data);
 int		keys(int key, t_data *data);
+double	degtorad(int deg);
 
 #endif

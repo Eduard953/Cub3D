@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   coord.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 08:11:56 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/24 11:31:55 by pstengl          ###   ########.fr       */
+/*   Created: 2022/04/24 11:25:14 by pstengl           #+#    #+#             */
+/*   Updated: 2022/04/24 11:42:02 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
-# include "../coord.h"
+#ifndef COORD_H
+# define COORD_H
 
-typedef struct s_point
-{
-	double	x;
-	double	y;
-}	t_point;
-
-t_point	point_create(double x, double y);
-t_coord	pointtocoord(t_point point);
+typedef struct s_coord {
+	int	x;
+	int	y;
+}	t_coord;
 
 #endif

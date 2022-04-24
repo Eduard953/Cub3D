@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/05 14:47:17 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/24 12:01:52 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	parse_player(t_data *data, size_t i, size_t j)
 		data->ash.view_angle = 180;
 	else if (data->map.tiles[i][j] == 'E')
 		data->ash.view_angle = 270;
-	data->ash.pos.x = j + 0.0;
-	data->ash.pos.y = i + 0.0;
+	data->ash.pos.x = j + 0.5;
+	data->ash.pos.y = i + 0.5;
 	return (1);
 }
 
