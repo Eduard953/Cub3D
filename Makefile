@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/05 14:47:55 by ebeiline         ###   ########.fr        #
+#    Updated: 2022/04/24 11:50:11 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ TESTS:=			./tests
 
 # Other Variables:
 COMPILER:=		gcc
-COMPFLAGS:=		-Wall -Werror -Wextra
+COMPFLAGS:=		-Wall -Werror -Wextra -g
 LIBPATHS:=		/usr/X11
 STDLIBS:=		m X11 Xext z
 NONSTDLIBS:=	libft gnl mlx
@@ -34,9 +34,14 @@ NORMFLAGS:=
 # Source Files:
 SRCFILES:=\
 	point/point.c\
+	point/pointtocoord.c\
+	ray/cast.c\
+	degtorad.c\
 	check_arguments.c\
 	parse_helpers.c\
 	parsing.c\
+	keys.c\
+	exit.c\
 	main.c\
 
 # ------------------------------------------

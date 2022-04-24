@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   precomp.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 08:11:56 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/24 11:31:55 by pstengl          ###   ########.fr       */
+/*   Created: 2022/04/24 11:23:32 by pstengl           #+#    #+#             */
+/*   Updated: 2022/04/24 11:34:19 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
-# include "../coord.h"
+#ifndef PRECOMP_H
+# define PRECOMP_H
 
-typedef struct s_point
+typedef struct s_precomp
 {
-	double	x;
-	double	y;
-}	t_point;
-
-t_point	point_create(double x, double y);
-t_coord	pointtocoord(t_point point);
+	int		step_x;
+	int		step_y;
+	double	delta_dist_x;
+	double	delta_dist_y;
+	double	side_dist_x;
+	double	side_dist_y;
+}	t_precomp;
 
 #endif

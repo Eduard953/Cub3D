@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 08:11:56 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/24 11:31:55 by pstengl          ###   ########.fr       */
+/*   Created: 2022/04/24 11:22:49 by pstengl           #+#    #+#             */
+/*   Updated: 2022/04/24 11:45:02 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
-# include "../coord.h"
+#ifndef RAY_H
+# define RAY_H
+# include "../point/point.h"
+# include "../cub3d.h"
 
-typedef struct s_point
-{
-	double	x;
-	double	y;
-}	t_point;
+typedef struct s_ray {
+	double	distance;
+	char	side;
+}	t_ray;
 
-t_point	point_create(double x, double y);
-t_coord	pointtocoord(t_point point);
+t_ray	ray_cast(t_map map, t_point pos, int angle);
 
 #endif

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point.h                                            :+:      :+:    :+:   */
+/*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
+/*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/31 08:11:56 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/24 11:31:55 by pstengl          ###   ########.fr       */
+/*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
+/*   Updated: 2022/04/10 19:34:59 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef POINT_H
-# define POINT_H
-# include "../coord.h"
+#include "cub3d.h"
 
-typedef struct s_point
+int	keys(int key, t_data *data)
 {
-	double	x;
-	double	y;
-}	t_point;
-
-t_point	point_create(double x, double y);
-t_coord	pointtocoord(t_point point);
-
-#endif
+	if (key == 65307)
+		red_cross(data);
+	return (0);
+}
