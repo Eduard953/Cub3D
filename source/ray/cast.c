@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/04/24 12:05:14 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 11:52:14 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ t_ray	ray_cast(t_map map, t_point pos, int angle)
 			coords.y += precomp.step_y;
 			ray.side = 1;
 		}
-		printf("Checking X:%d Y:%d\n", coords.x, coords.y);
-		if (map.tiles[coords.y][coords.x] > 0)
+		if (map.tiles[coords.y][coords.x] != '0')
 			break ;
 	}
 	if (ray.side == 0)

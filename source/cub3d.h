@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/24 11:45:51 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 11:18:13 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
 
+# define WINDOW_WIDTH	800
+# define WINDOW_HEIGHT	600
+# define FOV			60
+
 typedef struct s_size
 {
 	size_t	x;
@@ -31,7 +35,7 @@ typedef struct s_size
 typedef struct s_player
 {
 	t_point	pos;
-	double	view_angle;
+	int		view_angle;
 }	t_player;
 
 typedef struct s_map {
@@ -64,5 +68,7 @@ void	parse(t_data *data, char **argv);
 int		red_cross(t_data *data);
 int		keys(int key, t_data *data);
 double	degtorad(int deg);
+void	cast_all_rays(t_data data);
+int		angleadd(int base, int add);
 
 #endif
