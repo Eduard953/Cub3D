@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/04/25 12:15:42 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:01:49 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "precomp.h"
 #include <stdio.h>
 
-t_precomp	ray_precompute(t_point pos, int angle)
+static t_precomp	ray_precompute(t_point pos, int angle)
 {
 	t_precomp	precomp;
 	double		ray_dir_x;
@@ -47,6 +47,22 @@ t_precomp	ray_precompute(t_point pos, int angle)
 	return (precomp);
 }
 
+static void	advance_ray(t_precomp *precomp, t_ray *ray, t_coord *coords)
+{
+	if (precomp->side_dist_x < precomp->side_dist_y)
+	{
+		precomp->side_dist_x += precomp->delta_dist_x;
+		coords->x += precomp->step_x;
+		ray->side = 0;
+	}
+	else
+	{
+		precomp->side_dist_y += precomp->delta_dist_y;
+		coords->y += precomp->step_y;
+		ray->side = 1;
+	}
+}
+
 t_ray	ray_cast(t_map map, t_point pos, int angle)
 {
 	t_precomp	precomp;
@@ -57,18 +73,7 @@ t_ray	ray_cast(t_map map, t_point pos, int angle)
 	precomp = ray_precompute(pos, angle);
 	while (1)
 	{
-		if (precomp.side_dist_x < precomp.side_dist_y)
-		{
-			precomp.side_dist_x += precomp.delta_dist_x;
-			coords.x += precomp.step_x;
-			ray.side = 0;
-		}
-		else
-		{
-			precomp.side_dist_y += precomp.delta_dist_y;
-			coords.y += precomp.step_y;
-			ray.side = 1;
-		}
+		advance_ray(&precomp, &ray, &coords);
 		if (map.tiles[coords.y][coords.x] != '0')
 			break ;
 	}
