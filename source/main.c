@@ -6,12 +6,19 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/24 11:54:13 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 13:19:17 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "ray/ray.h"
+
+void	error_message(char *message)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(message, 2);
+	exit(1);
+}
 
 void	init(t_data *data)
 {

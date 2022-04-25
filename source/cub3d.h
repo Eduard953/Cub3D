@@ -22,6 +22,16 @@
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
 
+# define W_MAC				119
+# define A_MAC				97
+# define S_MAC				115
+# define D_MAC				100
+# define E_MAC				101
+
+# define ESC				65307
+# define LEFT				65361
+# define RIGHT				65363
+
 typedef struct s_size
 {
 	size_t	x;
