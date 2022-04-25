@@ -6,21 +6,24 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/25 17:53:30 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:18:01 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# define W		119
-# define A		97
-# define S		115
-# define D		100
-# define E		101
-# define ESC	65307
-# define LEFT	65361
-# define RIGHT	65363
+# define KEY_W			119
+# define KEY_A			97
+# define KEY_S			115
+# define KEY_D			100
+# define KEY_E			101
+# define KEY_ESC		65307
+# define KEY_LEFT		65361
+# define KEY_RIGHT		65363
+# define WINDOW_WIDTH	800
+# define WINDOW_HEIGHT	600
+# define FOV			60
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -30,10 +33,6 @@
 # include "../libraries/libft/include/libft.h"
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
-
-# define WINDOW_WIDTH	800
-# define WINDOW_HEIGHT	600
-# define FOV			60
 
 typedef struct s_size
 {
