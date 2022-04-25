@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/24 11:45:51 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:54:11 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -15,27 +15,27 @@
 
 # ifdef __APPLE__
 
-# define W		119
-# define A		97
-# define S		115
-# define D		100
-# define E		101
-# define ESC	65307
-# define LEFT	65361
-# define RIGHT	65363
+#  define W		119
+#  define A		97
+#  define S		115
+#  define D		100
+#  define E		101
+#  define ESC	65307
+#  define LEFT	65361
+#  define RIGHT	65363
 
 # else
 
-# define W		13
-# define A		0
-# define S		1
-# define D		2
-# define E		14
-# define ESC	53
-# define LEFT	123
-# define RIGHT	124
+#  define W		13
+#  define A		0
+#  define S		1
+#  define D		2
+#  define E		14
+#  define ESC	53
+#  define LEFT	123
+#  define RIGHT	124
 
-#endif
+# endif
 
 # include <fcntl.h>
 # include <stdio.h>
