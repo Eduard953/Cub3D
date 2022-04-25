@@ -13,29 +13,14 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# ifdef __APPLE__
-
-#  define W		119
-#  define A		97
-#  define S		115
-#  define D		100
-#  define E		101
-#  define ESC	65307
-#  define LEFT	65361
-#  define RIGHT	65363
-
-# else
-
-#  define W		119
-#  define A		97
-#  define S		115
-#  define D		100
-#  define E		101
-#  define ESC	65307
-#  define LEFT	65361
-#  define RIGHT	65363
-
-# endif
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define E		101
+# define ESC	65307
+# define LEFT	65361
+# define RIGHT	65363
 
 # include <fcntl.h>
 # include <stdio.h>
