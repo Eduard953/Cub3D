@@ -13,6 +13,30 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# ifdef __APPLE__
+
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define E		101
+# define ESC	65307
+# define LEFT	65361
+# define RIGHT	65363
+
+# else
+
+# define W		13
+# define A		0
+# define S		1
+# define D		2
+# define E		14
+# define ESC	53
+# define LEFT	123
+# define RIGHT	124
+
+#endif
+
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -21,16 +45,6 @@
 # include "../libraries/libft/include/libft.h"
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
-
-# define W_MAC				119
-# define A_MAC				97
-# define S_MAC				115
-# define D_MAC				100
-# define E_MAC				101
-
-# define ESC				65307
-# define LEFT				65361
-# define RIGHT				65363
 
 typedef struct s_size
 {
