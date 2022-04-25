@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:35:17 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/25 11:46:37 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:09:07 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,17 @@ void	cast_all_rays(t_data data)
 	int		index;
 	int		offset;
 	int		angle;
+	double	scale;
 
+	scale = (double)WINDOW_WIDTH / (double)FOV;
 	offset = data.ash.view_angle - (FOV / 2);
 	index = 0;
 	while (index < FOV)
 	{
 		angle = angleadd(offset, index);
 		ray = ray_cast(data.map, data.ash.pos, angle);
-		draw_vertical(data, index * 10, 10, (WINDOW_HEIGHT / ray.distance));
+		draw_vertical(data, index * scale, scale + 1,
+			(WINDOW_HEIGHT / ray.distance));
 		index++;
 	}
 }
