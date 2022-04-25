@@ -6,12 +6,21 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/25 11:18:13 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 17:53:30 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define E		101
+# define ESC	65307
+# define LEFT	65361
+# define RIGHT	65363
 
 # include <fcntl.h>
 # include <stdio.h>
