@@ -6,12 +6,21 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/24 11:45:51 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 16:58:35 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define E		101
+# define ESC	65307
+# define LEFT	65361
+# define RIGHT	65363
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -21,16 +30,6 @@
 # include "../libraries/libft/include/libft.h"
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
-
-# define W_MAC				119
-# define A_MAC				97
-# define S_MAC				115
-# define D_MAC				100
-# define E_MAC				101
-
-# define ESC				65307
-# define LEFT				65361
-# define RIGHT				65363
 
 typedef struct s_size
 {
