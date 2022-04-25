@@ -32,6 +32,8 @@
 # define LEFT				65361
 # define RIGHT				65363
 
+# define ROTATION	1 
+
 typedef struct s_size
 {
 	size_t	x;
@@ -74,5 +76,7 @@ void	parse(t_data *data, char **argv);
 int		red_cross(t_data *data);
 int		keys(int key, t_data *data);
 double	degtorad(int deg);
+void	rotation_right(t_player ash);
+void	rotation_left(t_player ash);
 
 #endif

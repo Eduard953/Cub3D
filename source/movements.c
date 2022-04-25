@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/25 17:40:58 by ebeiline         ###   ########.fr       */
+/*   Created: 2022/04/25 17:51:26 by ebeiline          #+#    #+#             */
+/*   Updated: 2022/04/25 18:14:11 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	keys(int key, t_data *data)
+void	move_left(t_data data)
 {
-	if (key == ESC)
-		red_cross(data);
-	else if (key == W_MAC)
-		move_forward(data);
-	else if (key == S_MAC)
-		move_backward(data);
-	else if (key == A_MAC)
-		move_left(data);
-	else if (key == D_MAC)
-		move_right(data);
-	else if (key == LEFT)
-		rotate_left(data->ash);
-	else if (key == RIGHT)
-		rotate_right(data->ash);
-	return (0);
+
 }

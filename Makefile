@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/24 11:50:11 by pstengl          ###   ########.fr        #
+#    Updated: 2022/04/25 17:50:55 by ebeiline         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,8 +40,9 @@ SRCFILES:=\
 	check_arguments.c\
 	parse_helpers.c\
 	parsing.c\
-	keys.c\
+	hook.c\
 	exit.c\
+	rotate.c\
 	main.c\
 
 # ------------------------------------------
