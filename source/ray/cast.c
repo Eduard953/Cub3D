@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/04/25 11:52:14 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 12:15:42 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_precomp	ray_precompute(t_point pos, int angle)
 
 	map_xy = pointtocoord(pos);
 	ray_dir_x = sin(degtorad(angle));
-	ray_dir_y = cos(degtorad(angle));
+	ray_dir_y = -cos(degtorad(angle));
 	precomp.delta_dist_x = fabs(1 / ray_dir_x);
 	precomp.delta_dist_y = fabs(1 / ray_dir_y);
 	precomp.step_x = 1;
