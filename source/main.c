@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/25 13:19:17 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/25 17:53:47 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,22 +36,25 @@ void	init(t_data *data)
 	data->map.skip = 0;
 }
 
+int	loop(t_data *data)
+{
+	cast_all_rays(*data);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
-	t_ray	ray;
 
 	check_format(argc, argv);
 	init(&data);
 	parse(&data, argv);
 	check_map(&data);
 	data.mlx = mlx_init();
-	data.win = mlx_new_window(data.mlx, data.map.size.x * 32,
-			data.map.size.y * 32, "CUB3D");
+	data.win = mlx_new_window(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "CUB3D");
 	mlx_hook(data.win, 17, 0L, red_cross, &data);
 	mlx_hook(data.win, 2, 1L << 0, keys, &data);
-	ray = ray_cast(data.map, data.ash.pos, 326);
-	printf("side: %d, distance %f\n", ray.side, ray.distance);
+	mlx_loop_hook(data.mlx, loop, &data);
 	mlx_loop(data.mlx);
 	return (0);
 }

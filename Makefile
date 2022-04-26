@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/04/25 17:50:55 by ebeiline         ###   ########.fr        #
+#    Updated: 2022/04/26 16:26:38 by ebeiline         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRCFILES:=\
 	point/point.c\
 	point/pointtocoord.c\
 	ray/cast.c\
-	degtorad.c\
+	angles.c\
+	cast_all_rays.c\
 	check_arguments.c\
 	parse_helpers.c\
 	parsing.c\

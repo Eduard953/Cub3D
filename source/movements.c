@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 17:51:26 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/25 18:14:19 by ebeiline         ###   ########.fr       */
+/*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
+/*   Updated: 2022/04/26 16:26:11 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,8 @@
 void	move_left(t_data data)
 {
 
+}
+	if (key == KEY_ESC)
+		red_cross(data);
+	return (0);
 }

@@ -6,12 +6,24 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/24 11:45:51 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/25 18:18:01 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
+# define KEY_W			119
+# define KEY_A			97
+# define KEY_S			115
+# define KEY_D			100
+# define KEY_E			101
+# define KEY_ESC		65307
+# define KEY_LEFT		65361
+# define KEY_RIGHT		65363
+# define WINDOW_WIDTH	800
+# define WINDOW_HEIGHT	600
+# define FOV			60
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -22,18 +34,6 @@
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
 
-# define W_MAC				119
-# define A_MAC				97
-# define S_MAC				115
-# define D_MAC				100
-# define E_MAC				101
-
-# define ESC				65307
-# define LEFT				65361
-# define RIGHT				65363
-
-# define ROTATION	1 
-
 typedef struct s_size
 {
 	size_t	x;
@@ -43,7 +43,7 @@ typedef struct s_size
 typedef struct s_player
 {
 	t_point	pos;
-	double	view_angle;
+	int		view_angle;
 }	t_player;
 
 typedef struct s_map {
@@ -78,5 +78,7 @@ int		keys(int key, t_data *data);
 double	degtorad(int deg);
 void	rotation_right(t_player ash);
 void	rotation_left(t_player ash);
+void	cast_all_rays(t_data data);
+int		angleadd(int base, int add);
 
 #endif
