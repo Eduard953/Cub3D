@@ -21,6 +21,8 @@
 # define KEY_ESC		65307
 # define KEY_LEFT		65361
 # define KEY_RIGHT		65363
+# define ROTA_SPEED		1
+# define MOVE_SPEED		0.05
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
 # define FOV			60
@@ -76,9 +78,13 @@ void	parse(t_data *data, char **argv);
 int		red_cross(t_data *data);
 int		keys(int key, t_data *data);
 double	degtorad(int deg);
-void	rotation_right(t_player ash);
-void	rotation_left(t_player ash);
+void	rotation_right(t_player *ash);
+void	rotation_left(t_player *ash);
 void	cast_all_rays(t_data data);
 int		angleadd(int base, int add);
+void	move_forward(t_data *data);
+void	move_backward(t_data *data);
+void	move_right(t_data *data);
+void	move_left(t_data *data);
 
 #endif

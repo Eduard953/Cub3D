@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/25 17:53:47 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/26 16:55:24 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win, 17, 0L, red_cross, &data);
 	mlx_hook(data.win, 2, 1L << 0, keys, &data);
 	mlx_loop_hook(data.mlx, loop, &data);
+	printf("%d\n", data.ash.view_angle);
 	mlx_loop(data.mlx);
 	return (0);
 }
