@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/26 16:55:24 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/26 19:40:39 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init(t_data *data)
 
 int	loop(t_data *data)
 {
+	mlx_clear_window(data->mlx, data->win);
 	cast_all_rays(*data);
 	return (0);
 }
