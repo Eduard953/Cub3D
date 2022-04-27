@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/25 18:18:01 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/27 17:25:41 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define KEY_ESC		65307
 # define KEY_LEFT		65361
 # define KEY_RIGHT		65363
+# define ROTA_SPEED		1
+# define MOVE_SPEED		0.05
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
 # define FOV			60
@@ -62,6 +64,7 @@ typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
+	void		*img;
 	t_map		map;
 	t_player	ash;
 }	t_data;
@@ -76,9 +79,15 @@ void	parse(t_data *data, char **argv);
 int		red_cross(t_data *data);
 int		keys(int key, t_data *data);
 double	degtorad(int deg);
-void	rotation_right(t_player ash);
-void	rotation_left(t_player ash);
+void	rotation_right(t_player *ash);
+void	rotation_left(t_player *ash);
 void	cast_all_rays(t_data data);
 int		angleadd(int base, int add);
+void	move_forward(t_data *data);
+void	move_backward(t_data *data);
+void	move_right(t_data *data);
+void	move_left(t_data *data);
+void	image_clear(void *mlx, void *img);
+void	image_pixel_put(t_data data, int x, int y, int color);
 
 #endif

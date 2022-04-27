@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/25 17:53:47 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/27 17:13:18 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void	init(t_data *data)
 
 int	loop(t_data *data)
 {
+	image_clear(data->mlx, data->img);
 	cast_all_rays(*data);
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
 
@@ -55,6 +57,7 @@ int	main(int argc, char **argv)
 	mlx_hook(data.win, 17, 0L, red_cross, &data);
 	mlx_hook(data.win, 2, 1L << 0, keys, &data);
 	mlx_loop_hook(data.mlx, loop, &data);
+	data.img = mlx_new_image(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	mlx_loop(data.mlx);
 	return (0);
 }

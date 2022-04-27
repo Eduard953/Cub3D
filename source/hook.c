@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/25 17:40:58 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/26 17:15:26 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 int	keys(int key, t_data *data)
 {
-	if (key == ESC)
+	if (key == KEY_ESC)
 		red_cross(data);
-	else if (key == W_MAC)
+	else if (key == KEY_W)
 		move_forward(data);
-	else if (key == S_MAC)
+	else if (key == KEY_S)
 		move_backward(data);
-	else if (key == A_MAC)
+	else if (key == KEY_A)
 		move_left(data);
-	else if (key == D_MAC)
+	else if (key == KEY_D)
 		move_right(data);
-	else if (key == LEFT)
-		rotate_left(data->ash);
-	else if (key == RIGHT)
-		rotate_right(data->ash);
+	else if (key == KEY_LEFT)
+		rotation_left(&data->ash);
+	else if (key == KEY_RIGHT)
+		rotation_right(&data->ash);
 	return (0);
 }
