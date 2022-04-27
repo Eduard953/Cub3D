@@ -6,13 +6,13 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:13:03 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/27 13:27:08 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/27 17:19:53 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	image_clear(void *img)
+void	image_clear(void *mlx, void *img)
 {
 	char	*img_addr;
 	int		bits_per_pixel;
@@ -20,10 +20,10 @@ void	image_clear(void *img)
 	int		endian;
 
 	img_addr = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	ft_memset(img_addr, 0xFF000000, WINDOW_WIDTH * WINDOW_HEIGHT);
+	ft_memset(img_addr, mlx_get_color_value(mlx, 0xFF000000), WINDOW_WIDTH * WINDOW_HEIGHT * (bits_per_pixel / 8));
 }
 
-void	image_pixel_put(void *img, int x, int y, int color)
+void	image_pixel_put(void *mlx, void *img, int x, int y, int color)
 {
 	char	*img_addr;
 	int		bits_per_pixel;
@@ -35,5 +35,5 @@ void	image_pixel_put(void *img, int x, int y, int color)
 		return;
 	if (y < 0 || y > WINDOW_HEIGHT)
 		return;
-	img_addr[(y * size_line) + x] = color;
+	img_addr[(y * size_line) + (x * (bits_per_pixel / 8))] = mlx_get_color_value(mlx, color);
 }
