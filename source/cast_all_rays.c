@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:35:17 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/27 17:13:04 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/27 17:27:37 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static void	draw_vertical(t_data data, int x, int width, int height)
 		y_select = 0;
 		while (y_select < height)
 		{
-			image_pixel_put(data.mlx, data.img, x + x_select, y + y_select, 0xFFFF00FF);
+			image_pixel_put(data, x + x_select, y + y_select,
+				0xFFFF00FF);
 			y_select++;
 		}
 		x_select++;

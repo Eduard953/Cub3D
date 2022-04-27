@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:13:03 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/27 17:19:53 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/27 17:27:15 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,23 @@ void	image_clear(void *mlx, void *img)
 	int		endian;
 
 	img_addr = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	ft_memset(img_addr, mlx_get_color_value(mlx, 0xFF000000), WINDOW_WIDTH * WINDOW_HEIGHT * (bits_per_pixel / 8));
+	ft_memset(img_addr, mlx_get_color_value(mlx, 0xFF000000),
+		WINDOW_WIDTH * WINDOW_HEIGHT * (bits_per_pixel / 8));
 }
 
-void	image_pixel_put(void *mlx, void *img, int x, int y, int color)
+void	image_pixel_put(t_data data, int x, int y, int color)
 {
 	char	*img_addr;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
 
-	img_addr = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+	img_addr = mlx_get_data_addr(data.img, &bits_per_pixel, &size_line,
+			&endian);
 	if (x < 0 || x > WINDOW_WIDTH)
-		return;
+		return ;
 	if (y < 0 || y > WINDOW_HEIGHT)
-		return;
-	img_addr[(y * size_line) + (x * (bits_per_pixel / 8))] = mlx_get_color_value(mlx, color);
+		return ;
+	img_addr[(y * size_line) + (x * (bits_per_pixel / 8))]
+		= mlx_get_color_value(data.mlx, color);
 }
