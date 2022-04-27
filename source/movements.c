@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/27 17:39:11 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/27 19:55:45 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	move_backward(t_data *data)
 	dy = cos(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	dx = sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	printf("delta x: %f, delta y: %f\n", dx, dy);
-	if (data->map.tiles[(int)(data->ash.pos.y - dy)][(int)(data->ash.pos.x - dx)] == '0')
+	if (data->map.tiles[(int)(data->ash.pos.y + dy)][(int)(data->ash.pos.x + dx)] == '0')
 	{
 		data->ash.pos.x += dx;
 		data->ash.pos.y += dy;
