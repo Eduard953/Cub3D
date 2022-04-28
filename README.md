@@ -21,19 +21,27 @@ reboot
 
 ## Todo:
 
-1. input validation
-
-2. initiate the game
-
-3. build the game
-
-4. finish the game
-
-5. handle errors, norm & leaks
+- [X] Window handling must remain smooth
+- [ ] Display different wall textures based on which side the wall is facing
+- [ ] Different colors for Floor and Ceiling
+- [X] Left and Right arrow keys for turning left and right
+- [X] W, A, S, D to move the Player
+- [X] Esc must close the Window
+- [X] Red Cross on window frame must close the Window
+- [X] Map can have 0, 1, N, S, E, W characters
+- [X] Map must be surrounded by walls
+- [X] Apart from the map the other information can be in arbitrary order
+- [X] Map can have Spaces and non-rectangular shapes
+- [X] Information preceded by their Identifier (NO, SO, WE, EA, F, C) and followed by the value
+- [X] If there is any error in the file display Error and a newline followed by an explicit error message
+- [X] BONUS: Wall collisions
+- [ ] BONUS: Minimap
+- [ ] BONUS: Doors which can open and close
+- [ ] BONUS: animated sprite
+- [ ] BONUS: Rotate POV with Mouse
 
 ## Folder Structure:
 - `source/`: C Source Files (.c) and Private Header files (.h) sorted in subfolders
-- `include/`: Public-Facing Header Files (.h) with subfolders
 - `libraries/`: Libraries (e.g. libft, minilibx)
 - `build/`: Folder for Object Files (.o) created by Makefile at buildtime
 - `data/`: External Data (e.g. Images)
