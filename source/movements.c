@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/27 19:55:45 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/04/28 11:08:18 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	move_forward(t_data *data)
 {
 	double	dx;
 	double	dy;
-	
+
 	dy = cos(degtorad(data->ash.view_angle)) * MOVE_SPEED;
-	dx = sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
+	dx = -sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	if (data->map.tiles[(int)(data->ash.pos.y - dy)][(int)(data->ash.pos.x - dx)] == '0')
 	{
 		data->ash.pos.x -= dx;
@@ -32,9 +32,9 @@ void	move_backward(t_data *data)
 {
 	double	dx;
 	double	dy;
-	
+
 	dy = cos(degtorad(data->ash.view_angle)) * MOVE_SPEED;
-	dx = sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
+	dx = -sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	printf("delta x: %f, delta y: %f\n", dx, dy);
 	if (data->map.tiles[(int)(data->ash.pos.y + dy)][(int)(data->ash.pos.x + dx)] == '0')
 	{
@@ -48,9 +48,9 @@ void	move_left(t_data *data)
 {
 	double	dx;
 	double	dy;
-	
-	dy = cos(degtorad((data->ash.view_angle - 90) % 360)) * MOVE_SPEED;
-	dx = sin(degtorad((data->ash.view_angle - 90) % 360)) * MOVE_SPEED;
+
+	dy = -sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
+	dx = -cos(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	if (data->map.tiles[(int)(data->ash.pos.y + dy)][(int)(data->ash.pos.x + dx)] == '0')
 	{
 		data->ash.pos.x += dx;
@@ -63,9 +63,9 @@ void   move_right(t_data *data)
 {
 	double	dx;
 	double	dy;
-	
-	dy = cos(degtorad((data->ash.view_angle + 90) % 360)) * MOVE_SPEED;
-	dx = sin(degtorad((data->ash.view_angle + 90) % 360)) * MOVE_SPEED;
+
+	dy = sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
+	dx = cos(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	if (data->map.tiles[(int)(data->ash.pos.y + dy)][(int)(data->ash.pos.x + dx)] == '0')
 	{
 		data->ash.pos.x += dx;
