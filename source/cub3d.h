@@ -26,6 +26,7 @@
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
 # define FOV			60
+# define WALL_DIST		1
 
 # include <fcntl.h>
 # include <stdio.h>
