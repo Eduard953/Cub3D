@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:35:17 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/28 11:22:37 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/04/28 11:45:54 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	cast_all_rays(t_data data)
 		angle = angleadd(offset, index);
 		ray = ray_cast(data.map, data.ash.pos, angle);
 		printf("Distance: %f\n", ray.distance);
-		if (ray.distance <= 0.001)
-			ray.distance = 0.001;
+		if (ray.distance < 1)
+			ray.distance = 1;
 		draw_vertical(data, index * scale, scale + 1,
 			(WINDOW_HEIGHT / ray.distance));
 		index++;
