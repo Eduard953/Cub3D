@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
+/*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 11:22:49 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/24 11:45:02 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/01 13:39:57 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ typedef struct s_ray {
 }	t_ray;
 
 t_ray	ray_cast(t_map map, t_point pos, int angle);
+t_ray	door_ray_cast(t_map map, t_point pos, int angle);
 
 #endif

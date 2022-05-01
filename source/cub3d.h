@@ -27,6 +27,7 @@
 # define WINDOW_HEIGHT	600
 # define FOV			60
 # define WALL_DIST		1
+# define DOOR_DIST		1
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -49,6 +50,12 @@ typedef struct s_player
 	int		view_angle;
 }	t_player;
 
+typedef struct s_door
+{
+	t_point	pos;
+	int		open;
+}	t_door;
+
 typedef struct s_map {
 	char	**tiles;
 	char	*texture_north;
@@ -59,6 +66,8 @@ typedef struct s_map {
 	int		floor_color;
 	int		skip;
 	t_size	size;
+	int		door_num;
+	t_door	*doors;
 }	t_map;
 
 typedef struct s_data
@@ -90,5 +99,8 @@ void	move_right(t_data *data);
 void	move_left(t_data *data);
 void	image_clear(void *mlx, void *img);
 void	image_pixel_put(t_data data, int x, int y, int color);
+int		check_door_state(t_map map, t_coord coords);
+void	add_door(t_data *data, size_t i, size_t j);
+void	door_change_state(t_data *data);
 
 #endif

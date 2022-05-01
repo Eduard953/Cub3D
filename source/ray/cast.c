@@ -76,7 +76,34 @@ t_ray	ray_cast(t_map map, t_point pos, int angle)
 	while (counter < 100)
 	{
 		advance_ray(&precomp, &ray, &coords);
-		if (map.tiles[coords.y][coords.x] != '0')
+		if (map.tiles[coords.y][coords.x] == '1')
+			break ;
+		if (map.tiles[coords.y][coords.x] == '2')
+			if (!check_door_state(map, coords))
+				break;
+		counter++;
+	}
+	if (ray.side == 0)
+		ray.distance = precomp.side_dist_x - precomp.delta_dist_x;
+	else
+		ray.distance = precomp.side_dist_y - precomp.delta_dist_y;
+	return (ray);
+}
+
+t_ray	door_ray_cast(t_map map, t_point pos, int angle)
+{
+	t_precomp	precomp;
+	t_ray		ray;
+	t_coord		coords;
+	int			counter;
+
+	counter = 0;
+	coords = pointtocoord(pos);
+	precomp = ray_precompute(pos, angle);
+	while (counter < 100)
+	{
+		advance_ray(&precomp, &ray, &coords);
+		if (map.tiles[coords.y][coords.x] == '2')
 			break ;
 		counter++;
 	}
