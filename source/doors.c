@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 12:10:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/01 13:47:12 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/02 10:56:53 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	door_change_state(t_data *data)
 	i = 0;
 	while (i < data->map.door_num)
 	{
-		door_dist = door_ray_cast(data->map, data->ash.pos, data->ash.view_angle);
+		door_dist = door_ray_cast(data->map, data->ash.pos,
+				data->ash.view_angle);
 		if (door_dist.distance < DOOR_DIST)
 			data->map.doors[i].open = !data->map.doors[i].open;
 		i++;
@@ -30,7 +31,7 @@ void	door_change_state(t_data *data)
 
 int	check_door_state(t_map map, t_coord coords)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < map.door_num)
