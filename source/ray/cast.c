@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/04/28 11:41:36 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/02 10:52:11 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -103,6 +103,12 @@ t_ray	door_ray_cast(t_map map, t_point pos, int angle)
 	while (counter < 100)
 	{
 		advance_ray(&precomp, &ray, &coords);
+		if (coords.y < 0 || (size_t)coords.y > map.size.y || coords.x < 0 || (size_t)coords.x > map.size.x)
+		{
+			printf("Coords out of bound, no door found\n");
+			ray.distance = 1e30;
+			return ray;
+		}
 		if (map.tiles[coords.y][coords.x] == '2')
 			break ;
 		counter++;
