@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/28 19:58:55 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/02 15:39:48 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	cast_ray(t_data data, int offset)
 	t_ray	ray;
 
 	ray = ray_cast(data.map, data.ash.pos,
-			(data.ash.view_angle + offset) % 360);
+			angleadd(data.ash.view_angle, offset));
 	if (ray.distance < WALL_DIST)
 		return (1);
 	return (0);
