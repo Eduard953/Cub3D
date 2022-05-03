@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/04/27 17:25:41 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/02 16:13:10 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 # define KEY_ESC		65307
 # define KEY_LEFT		65361
 # define KEY_RIGHT		65363
-# define ROTA_SPEED		1
+# define ROTA_SPEED		2
 # define MOVE_SPEED		0.05
 # define WINDOW_WIDTH	800
 # define WINDOW_HEIGHT	600
 # define FOV			60
-# define WALL_DIST		1
+# define WALL_DIST		0.25
+# define GFX_QUALITY	1
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -46,7 +47,7 @@ typedef struct s_size
 typedef struct s_player
 {
 	t_point	pos;
-	int		view_angle;
+	double	view_angle;
 }	t_player;
 
 typedef struct s_map {
@@ -79,11 +80,11 @@ int		parse_player(t_data *data, size_t i, size_t j);
 void	parse(t_data *data, char **argv);
 int		red_cross(t_data *data);
 int		keys(int key, t_data *data);
-double	degtorad(int deg);
+double	degtorad(double deg);
 void	rotation_right(t_player *ash);
 void	rotation_left(t_player *ash);
 void	cast_all_rays(t_data data);
-int		angleadd(int base, int add);
+double	angleadd(double base, double add);
 void	move_forward(t_data *data);
 void	move_backward(t_data *data);
 void	move_right(t_data *data);

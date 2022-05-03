@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/04/28 11:41:36 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/02 15:47:39 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "precomp.h"
 #include <stdio.h>
 
-static t_precomp	ray_precompute(t_point pos, int angle)
+static t_precomp	ray_precompute(t_point pos, double angle)
 {
 	t_precomp	precomp;
 	double		ray_dir_x;
@@ -63,7 +63,7 @@ static void	advance_ray(t_precomp *precomp, t_ray *ray, t_coord *coords)
 	}
 }
 
-t_ray	ray_cast(t_map map, t_point pos, int angle)
+t_ray	ray_cast(t_map map, t_point pos, double angle)
 {
 	t_precomp	precomp;
 	t_ray		ray;
