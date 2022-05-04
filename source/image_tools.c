@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:13:03 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/27 17:27:15 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 12:46:26 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	image_clear(void *mlx, void *img)
 		WINDOW_WIDTH * WINDOW_HEIGHT * (bits_per_pixel / 8));
 }
 
-void	image_pixel_put(t_data data, int x, int y, int color)
+void	image_pixel_put(t_data data, int x, int y, unsigned int color)
 {
 	char	*img_addr;
 	int		bits_per_pixel;
@@ -37,6 +37,20 @@ void	image_pixel_put(t_data data, int x, int y, int color)
 		return ;
 	if (y < 0 || y > WINDOW_HEIGHT)
 		return ;
-	img_addr[(y * size_line) + (x * (bits_per_pixel / 8))]
-		= mlx_get_color_value(data.mlx, color);
+	color = mlx_get_color_value(data.mlx, color);
+	int pixel = (y * size_line) + (x * (bits_per_pixel / 8));
+    if (endian == 1)        // Most significant (Alpha) byte first
+    {
+        img_addr[pixel + 0] = (color >> 24);
+        img_addr[pixel + 1] = (color >> 16) & 0xFF;
+        img_addr[pixel + 2] = (color >> 8) & 0xFF;
+        img_addr[pixel + 3] = (color) & 0xFF;
+    }
+    else if (endian == 0)   // Least significant (Blue) byte first
+    {
+        img_addr[pixel + 0] = (color) & 0xFF;
+        img_addr[pixel + 1] = (color >> 8) & 0xFF;
+        img_addr[pixel + 2] = (color >> 16) & 0xFF;
+        img_addr[pixel + 3] = (color >> 24);
+    }
 }

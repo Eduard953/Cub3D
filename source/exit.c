@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:19:35 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/27 13:11:12 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 12:03:09 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	end_game(t_data *data)
 
 	i = 0;
 	mlx_destroy_image(data->mlx, data->img);
+	mlx_destroy_image(data->mlx, data->map.texture_north.mlx_img_ptr);
+	mlx_destroy_image(data->mlx, data->map.texture_east.mlx_img_ptr);
+	mlx_destroy_image(data->mlx, data->map.texture_west.mlx_img_ptr);
+	mlx_destroy_image(data->mlx, data->map.texture_south.mlx_img_ptr);
 	mlx_destroy_window(data->mlx, data->win);
 	free(data->mlx);
 	while (i < data->map.size.y)

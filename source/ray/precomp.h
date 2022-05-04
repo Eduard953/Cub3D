@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 11:23:32 by pstengl           #+#    #+#             */
-/*   Updated: 2022/04/24 11:34:19 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 10:53:26 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_precomp
 	double	delta_dist_y;
 	double	side_dist_x;
 	double	side_dist_y;
+	double	ray_dir_x;
+	double	ray_dir_y;
 }	t_precomp;
 
 #endif

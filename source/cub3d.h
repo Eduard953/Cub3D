@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/02 16:13:10 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 12:33:07 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -44,6 +44,17 @@ typedef struct s_size
 	size_t	y;
 }	t_size;
 
+typedef struct s_texture {
+	char	*filename;
+	char	*data;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+	void	*mlx_img_ptr;
+} t_texture;
+
 typedef struct s_player
 {
 	t_point	pos;
@@ -52,10 +63,10 @@ typedef struct s_player
 
 typedef struct s_map {
 	char	**tiles;
-	char	*texture_north;
-	char	*texture_east;
-	char	*texture_south;
-	char	*texture_west;
+	t_texture	texture_north;
+	t_texture	texture_east;
+	t_texture	texture_south;
+	t_texture	texture_west;
 	int		ceiling_color;
 	int		floor_color;
 	int		skip;
@@ -90,6 +101,8 @@ void	move_backward(t_data *data);
 void	move_right(t_data *data);
 void	move_left(t_data *data);
 void	image_clear(void *mlx, void *img);
-void	image_pixel_put(t_data data, int x, int y, int color);
+void	image_pixel_put(t_data data, int x, int y, unsigned int color);
+t_texture	load_texture(void *mlx, char *filename);
+void	load_images(t_data	*data);
 
 #endif
