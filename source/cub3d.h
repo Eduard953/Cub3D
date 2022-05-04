@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/04 20:20:03 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 21:03:22 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@
 # include "../libraries/gnl/include/gnl.h"
 # include "../libraries/mlx/mlx.h"
 
+typedef struct s_ray	t_ray;
+
 typedef struct s_size
 {
 	size_t	x;
@@ -53,7 +55,7 @@ typedef struct s_texture {
 	int		size_line;
 	int		endian;
 	void	*mlx_img_ptr;
-} t_texture;
+}	t_texture;
 
 typedef struct s_player
 {
@@ -62,15 +64,15 @@ typedef struct s_player
 }	t_player;
 
 typedef struct s_map {
-	char	**tiles;
+	char		**tiles;
 	t_texture	texture_north;
 	t_texture	texture_east;
 	t_texture	texture_south;
 	t_texture	texture_west;
-	int		ceiling_color;
-	int		floor_color;
-	int		skip;
-	t_size	size;
+	int			ceiling_color;
+	int			floor_color;
+	int			skip;
+	t_size		size;
 }	t_map;
 
 typedef struct s_data
@@ -82,27 +84,28 @@ typedef struct s_data
 	t_player	ash;
 }	t_data;
 
-int		parse_line(t_data *data, char *line, int fd);
-void	check_format(int argc, char **argv);
-void	error_message(char *message);
-void	check_map(t_data *data);
-int		get_x_y(t_data *data, char *line, int fd);
-int		parse_player(t_data *data, size_t i, size_t j);
-void	parse(t_data *data, char **argv);
-int		red_cross(t_data *data);
-int		keys(int key, t_data *data);
-double	degtorad(double deg);
-void	rotation_right(t_player *ash);
-void	rotation_left(t_player *ash);
-void	cast_all_rays(t_data data);
-double	angleadd(double base, double add);
-void	move_forward(t_data *data);
-void	move_backward(t_data *data);
-void	move_right(t_data *data);
-void	move_left(t_data *data);
-void	image_clear(void *mlx, void *img);
-void	image_pixel_put(t_data data, int x, int y, unsigned int color);
+int			parse_line(t_data *data, char *line, int fd);
+void		check_format(int argc, char **argv);
+void		error_message(char *message);
+void		check_map(t_data *data);
+int			get_x_y(t_data *data, char *line, int fd);
+int			parse_player(t_data *data, size_t i, size_t j);
+void		parse(t_data *data, char **argv);
+int			red_cross(t_data *data);
+int			keys(int key, t_data *data);
+double		degtorad(double deg);
+void		rotation_right(t_player *ash);
+void		rotation_left(t_player *ash);
+void		cast_all_rays(t_data data);
+double		angleadd(double base, double add);
+void		move_forward(t_data *data);
+void		move_backward(t_data *data);
+void		move_right(t_data *data);
+void		move_left(t_data *data);
+void		image_clear(void *mlx, void *img);
+void		image_pixel_put(t_data data, int x, int y, unsigned int color);
 t_texture	load_texture(void *mlx, char *filename);
-void	load_images(t_data	*data);
+void		load_images(t_data	*data);
+void		draw_wall(t_data data, t_ray ray, int x);
 
 #endif

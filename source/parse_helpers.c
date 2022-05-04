@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/04 11:47:47 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:44:49 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	get_color(char **line)
 t_texture	parse_texture(char *line)
 {
 	t_texture	tex;
-	char	*filename;
-	int		len;
+	char		*filename;
+	int			len;
 
 	filename = ft_strtrim(line, " ");
 	len = ft_strlen(filename);

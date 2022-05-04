@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/05/04 11:02:29 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:46:44 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -70,17 +70,14 @@ t_ray	ray_cast(t_map map, t_point pos, double angle)
 	t_precomp	precomp;
 	t_ray		ray;
 	t_coord		coords;
-	int			counter;
 
-	counter = 0;
 	coords = pointtocoord(pos);
 	precomp = ray_precompute(pos, angle);
-	while (counter < 100)
+	while (1)
 	{
 		advance_ray(&precomp, &ray, &coords);
 		if (map.tiles[coords.y][coords.x] != '0')
 			break ;
-		counter++;
 	}
 	ray.tile = map.tiles[coords.y][coords.x];
 	if (ray.side == 'E' || ray.side == 'W')
