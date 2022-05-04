@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 11:18:46 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/04 12:47:42 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:20:14 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ t_texture	load_texture(void *mlx, char *filename) {
 		texture.data = NULL;
 		return (texture);
 	}
-	texture.data = mlx_get_data_addr(texture.mlx_img_ptr, &(texture.bits_per_pixel), &(texture.size_line), &(texture.endian));
+	texture.data = (int *)mlx_get_data_addr(texture.mlx_img_ptr, &(texture.bits_per_pixel), &(texture.size_line), &(texture.endian));
 	return (texture);
 }

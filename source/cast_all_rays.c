@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:35:17 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/04 12:49:29 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:43:13 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,50 @@ static void	draw_vertical(t_data data, int x, int width, int height)
 	}
 }
 
-static void draw_wall(t_data data, t_ray ray, int x) {
-	int height;
-	t_texture	tex;
+static void	draw_wall(t_data data, t_ray ray, int x)
+{
+	int				height;
+	int				draw;
+	int				draw_end;
+	double			step;
+	double			tex_pos;
+	unsigned int	color;
+	t_size			tex_coord;
+	t_texture		texture;
 
 	if (ray.side == 'N')
-		tex = data.map.texture_north;
+		texture = data.map.texture_north;
 	else if (ray.side == 'S')
-		tex = data.map.texture_south;
+		texture = data.map.texture_south;
 	else if (ray.side == 'W')
-		tex = data.map.texture_west;
+		texture = data.map.texture_west;
 	else
-		tex = data.map.texture_east;
+		texture = data.map.texture_east;
+
+	tex_coord.x = ray.wall_x * (double)texture.width;
+	if (ray.side == 'E')
+		tex_coord.x = texture.width - tex_coord.x - 1;
+	if (ray.side == 'S')
+		tex_coord.x = texture.width - tex_coord.x - 1;
+
 	height = WINDOW_HEIGHT / ray.distance;
-	int texX = ray.wall_x * (double)tex.width;
-	if(ray.side == 'E') texX = tex.width - texX - 1;
-	if(ray.side == 'S') texX = tex.width - texX - 1;
-	double step = 1.0 * tex.height / height;
-	double texPos = ((-height / 2.0 + WINDOW_HEIGHT / 2.0) - WINDOW_HEIGHT / 2.0 + height / 2.0) * step;
-	for(int y = (-height / 2 + WINDOW_HEIGHT / 2); y<(height / 2 + WINDOW_HEIGHT / 2); y++)
+	draw = -height / 2 + WINDOW_HEIGHT / 2;
+	if (draw < 0)
+		draw = 0;
+	draw_end = height / 2 + WINDOW_HEIGHT / 2;
+	if (draw_end >= WINDOW_HEIGHT)
+		draw_end = WINDOW_HEIGHT - 1;
+	step = 1.0 * texture.height / height;
+	tex_pos = (draw - WINDOW_HEIGHT / 2.0 + height / 2.0) * step;
+	while (draw < draw_end)
 	{
-		int texY = (int)texPos & (tex.height - 1);
-		texPos += step;
-		unsigned int color = tex.data[(tex.size_line * texY) + (texX * (tex.bits_per_pixel / 8))];
-		if(ray.side == 'W' || ray.side == 'E') color = (color >> 1) & 8355711;
-		image_pixel_put(data, x, y, color);
+		tex_coord.y = (int)tex_pos & (texture.height - 1);
+		tex_pos += step;
+		color = texture.data[texture.width * tex_coord.y + tex_coord.x];
+		if (ray.side == 'W' || ray.side == 'E')
+			color = (color >> 1) & 8355711;
+		image_pixel_put(data, x, draw, color);
+		draw++;
 	}
 }
 
@@ -79,11 +98,12 @@ void	cast_all_rays(t_data data)
 		ray = ray_cast(data.map, data.ash.pos, angle);
 		if (ray.tile == '1')
 			draw_wall(data, ray, index * GFX_QUALITY);
-		else {
+		else
+		{
 			if (ray.distance < 1)
 				ray.distance = 1;
 			draw_vertical(data, index * GFX_QUALITY, GFX_QUALITY + 1,
-					(WINDOW_HEIGHT / ray.distance));
+				(WINDOW_HEIGHT / ray.distance));
 		}
 		index++;
 	}

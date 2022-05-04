@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/04 12:33:07 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:20:03 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_size
 
 typedef struct s_texture {
 	char	*filename;
-	char	*data;
+	int		*data;
 	int		width;
 	int		height;
 	int		bits_per_pixel;
