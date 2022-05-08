@@ -1,7 +1,7 @@
-NO data/textures/floor.xpm
-SO data/textures/floor.xpm
-WE data/textures/floor.xpm
-EA data/textures/floor.xpm
+NO data/textures/bluestone.xpm
+SO data/textures/purplestone.xpm
+WE data/textures/redbrick.xpm
+EA data/textures/greystone.xpm
 
 F 220,100,0
 C 225,30,0
