@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/27 19:31:57 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/04 11:48:29 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	check_parse(t_data *data)
 {
-	if (data->map.texture_north == NULL)
+	if (data->map.texture_north.filename == NULL)
 		error_message("no texture north");
-	if (data->map.texture_east == NULL)
+	if (data->map.texture_east.filename == NULL)
 		error_message("no texture east");
-	if (data->map.texture_south == NULL)
+	if (data->map.texture_south.filename == NULL)
 		error_message("no texture south");
-	if (data->map.texture_west == NULL)
+	if (data->map.texture_west.filename == NULL)
 		error_message("no texture west");
 	if (data->map.ceiling_color == -1)
 		error_message("no ceiling color");

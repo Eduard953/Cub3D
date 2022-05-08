@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:35:17 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/02 16:15:55 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:47:41 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	draw_vertical(t_data data, int x, int width, int height)
 		while (y_select < height)
 		{
 			image_pixel_put(data, x + x_select, y + y_select,
-				0xFFFF00FF);
+				0xFF00FF00);
 			y_select++;
 		}
 		x_select++;
@@ -49,10 +49,15 @@ void	cast_all_rays(t_data data)
 	{
 		angle = angleadd(offset, index * scale);
 		ray = ray_cast(data.map, data.ash.pos, angle);
-		if (ray.distance < 1)
-			ray.distance = 1;
-		draw_vertical(data, index * GFX_QUALITY, GFX_QUALITY + 1,
-			(WINDOW_HEIGHT / ray.distance));
+		if (ray.tile == '1')
+			draw_wall(data, ray, index * GFX_QUALITY);
+		else
+		{
+			if (ray.distance < 1)
+				ray.distance = 1;
+			draw_vertical(data, index * GFX_QUALITY, GFX_QUALITY + 1,
+				(WINDOW_HEIGHT / ray.distance));
+		}
 		index++;
 	}
 }

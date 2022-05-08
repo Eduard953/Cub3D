@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/10 19:30:00 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:44:49 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ int	get_color(char **line)
 	return (color);
 }
 
-char	*parse_texture(char *line)
+t_texture	parse_texture(char *line)
 {
-	char	*texture;
-	int		len;
+	t_texture	tex;
+	char		*filename;
+	int			len;
 
-	texture = ft_strtrim(line, " ");
-	len = ft_strlen(texture);
-	if (len < 5 || ft_strnstr(texture + len - 4, ".xpm", 4) == NULL)
-		error_message("use .xpm texture");
-	return (texture);
+	filename = ft_strtrim(line, " ");
+	len = ft_strlen(filename);
+	if (len < 5 || ft_strnstr(filename + len - 4, ".xpm", 4) == NULL)
+		error_message("use .xpm filename");
+	tex.filename = filename;
+	return (tex);
 }
 
 int	parse_color(char *line)

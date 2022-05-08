@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/05/02 15:47:39 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/04 20:46:44 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -21,25 +21,23 @@
 static t_precomp	ray_precompute(t_point pos, double angle)
 {
 	t_precomp	precomp;
-	double		ray_dir_x;
-	double		ray_dir_y;
 	t_coord		map_xy;
 
 	map_xy = pointtocoord(pos);
-	ray_dir_x = sin(degtorad(angle));
-	ray_dir_y = -cos(degtorad(angle));
-	precomp.delta_dist_x = fabs(1 / ray_dir_x);
-	precomp.delta_dist_y = fabs(1 / ray_dir_y);
+	precomp.ray_dir_x = sin(degtorad(angle));
+	precomp.ray_dir_y = -cos(degtorad(angle));
+	precomp.delta_dist_x = fabs(1 / precomp.ray_dir_x);
+	precomp.delta_dist_y = fabs(1 / precomp.ray_dir_y);
 	precomp.step_x = 1;
 	precomp.step_y = 1;
 	precomp.side_dist_x = (map_xy.x + 1.0 - pos.x) * precomp.delta_dist_x;
 	precomp.side_dist_y = (map_xy.y + 1.0 - pos.y) * precomp.delta_dist_y;
-	if (ray_dir_x < 0)
+	if (precomp.ray_dir_x < 0)
 	{
 		precomp.step_x = -1;
 		precomp.side_dist_x = (pos.x - map_xy.x) * precomp.delta_dist_x;
 	}
-	if (ray_dir_y < 0)
+	if (precomp.ray_dir_y < 0)
 	{
 		precomp.step_y = -1;
 		precomp.side_dist_y = (pos.y - map_xy.y) * precomp.delta_dist_y;
@@ -53,13 +51,17 @@ static void	advance_ray(t_precomp *precomp, t_ray *ray, t_coord *coords)
 	{
 		precomp->side_dist_x += precomp->delta_dist_x;
 		coords->x += precomp->step_x;
-		ray->side = 0;
+		ray->side = 'W';
+		if (precomp->ray_dir_x > 0)
+			ray->side = 'E';
 	}
 	else
 	{
 		precomp->side_dist_y += precomp->delta_dist_y;
 		coords->y += precomp->step_y;
-		ray->side = 1;
+		ray->side = 'N';
+		if (precomp->ray_dir_y > 0)
+			ray->side = 'S';
 	}
 }
 
@@ -68,21 +70,26 @@ t_ray	ray_cast(t_map map, t_point pos, double angle)
 	t_precomp	precomp;
 	t_ray		ray;
 	t_coord		coords;
-	int			counter;
 
-	counter = 0;
 	coords = pointtocoord(pos);
 	precomp = ray_precompute(pos, angle);
-	while (counter < 100)
+	while (1)
 	{
 		advance_ray(&precomp, &ray, &coords);
 		if (map.tiles[coords.y][coords.x] != '0')
 			break ;
-		counter++;
 	}
-	if (ray.side == 0)
+	ray.tile = map.tiles[coords.y][coords.x];
+	if (ray.side == 'E' || ray.side == 'W')
+	{
 		ray.distance = precomp.side_dist_x - precomp.delta_dist_x;
+		ray.wall_x = pos.y + ray.distance * precomp.ray_dir_y;
+	}
 	else
+	{
 		ray.distance = precomp.side_dist_y - precomp.delta_dist_y;
+		ray.wall_x = pos.x + ray.distance * precomp.ray_dir_x;
+	}
+	ray.wall_x -= floor(ray.wall_x);
 	return (ray);
 }

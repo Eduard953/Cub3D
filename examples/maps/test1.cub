@@ -1,7 +1,7 @@
-NO ../data/textures/floor.xpm
-SO ../data/textures/floor.xpm
-WE ../data/textures/floor.xpm
-EA ../data/textures/floor.xpm
+NO data/textures/floor.xpm
+SO data/textures/floor.xpm
+WE data/textures/floor.xpm
+EA data/textures/floor.xpm
 
 F 220,100,0
 C 225,30,0
