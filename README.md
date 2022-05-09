@@ -22,7 +22,7 @@ reboot
 ## Todo:
 
 - [X] Window handling must remain smooth
-- [ ] Display different wall textures based on which side the wall is facing
+- [X] Display different wall textures based on which side the wall is facing
 - [ ] Different colors for Floor and Ceiling
 - [X] Left and Right arrow keys for turning left and right
 - [X] W, A, S, D to move the Player
