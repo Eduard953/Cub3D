@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/04/26 17:15:26 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/01 13:33:31 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int	keys(int key, t_data *data)
 		rotation_left(&data->ash);
 	else if (key == KEY_RIGHT)
 		rotation_right(&data->ash);
+	else if (key == KEY_E)
+		door_change_state(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/04 12:51:40 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/10 09:53:32 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	init(t_data *data)
 	data->map.size.x = 0;
 	data->map.size.y = 0;
 	data->map.skip = 0;
+	data->map.doors = NULL;
+	data->map.door_num = 0;
 }
 
 int	loop(t_data *data)

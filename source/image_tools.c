@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:13:03 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/04 20:19:41 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/10 10:01:25 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ void	image_pixel_put(t_data data, int x, int y, unsigned int color)
 
 	img_addr = (int *)mlx_get_data_addr(data.img, &bits_per_pixel, &size_line,
 			&endian);
-	if (x < 0 || x > WINDOW_WIDTH)
+	if (x < 0 || x >= WINDOW_WIDTH)
 		return ;
-	if (y < 0 || y > WINDOW_HEIGHT)
+	if (y < 0 || y >= WINDOW_HEIGHT)
 		return ;
 	color = mlx_get_color_value(data.mlx, color);
 	img_addr[y * WINDOW_WIDTH + x] = color;

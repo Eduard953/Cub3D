@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/04 21:03:22 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/10 09:53:21 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define FOV			60
 # define WALL_DIST		0.25
 # define GFX_QUALITY	1
+# define DOOR_DIST		1
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -63,6 +64,12 @@ typedef struct s_player
 	double	view_angle;
 }	t_player;
 
+typedef struct s_door
+{
+	t_point	pos;
+	int		open;
+}	t_door;
+
 typedef struct s_map {
 	char		**tiles;
 	t_texture	texture_north;
@@ -73,6 +80,8 @@ typedef struct s_map {
 	int			floor_color;
 	int			skip;
 	t_size		size;
+	int		door_num;
+	t_door	*doors;
 }	t_map;
 
 typedef struct s_data
@@ -107,5 +116,8 @@ void		image_pixel_put(t_data data, int x, int y, unsigned int color);
 t_texture	load_texture(void *mlx, char *filename);
 void		load_images(t_data	*data);
 void		draw_wall(t_data data, t_ray ray, int x);
+int			check_door_state(t_map map, t_coord coords);
+void		add_door(t_data *data, size_t i, size_t j);
+void		door_change_state(t_data *data);
 
 #endif

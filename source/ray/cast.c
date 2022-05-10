@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/05/04 20:46:44 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/10 09:56:20 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ t_ray	ray_cast(t_map map, t_point pos, double angle)
 	while (1)
 	{
 		advance_ray(&precomp, &ray, &coords);
-		if (map.tiles[coords.y][coords.x] != '0')
+		if (map.tiles[coords.y][coords.x] == '1')
 			break ;
+		if (map.tiles[coords.y][coords.x] == '2')
+			if (!check_door_state(map, coords))
+				break ;
 	}
 	ray.tile = map.tiles[coords.y][coords.x];
 	if (ray.side == 'E' || ray.side == 'W')
@@ -91,5 +94,30 @@ t_ray	ray_cast(t_map map, t_point pos, double angle)
 		ray.wall_x = pos.x + ray.distance * precomp.ray_dir_x;
 	}
 	ray.wall_x -= floor(ray.wall_x);
+	return (ray);
+}
+
+t_ray	door_ray_cast(t_map map, t_point pos, double angle)
+{
+	t_precomp	precomp;
+	t_ray		ray;
+	t_coord		coords;
+
+	coords = pointtocoord(pos);
+	precomp = ray_precompute(pos, angle);
+	while (1)
+	{
+		advance_ray(&precomp, &ray, &coords);
+		if (coords.y < 0 || (size_t)coords.y > map.size.y
+			|| coords.x < 0 || (size_t)coords.x > map.size.x)
+			break ;
+		if (map.tiles[coords.y][coords.x] == '2')
+			break ;
+	}
+	ray.tile = map.tiles[coords.y][coords.x];
+	if (ray.side == 'E' || ray.side == 'W')
+		ray.distance = precomp.side_dist_x - precomp.delta_dist_x;
+	else
+		ray.distance = precomp.side_dist_y - precomp.delta_dist_y;
 	return (ray);
 }
