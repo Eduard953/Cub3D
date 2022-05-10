@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/10 09:53:21 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/10 10:05:45 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ typedef struct s_map {
 	int			floor_color;
 	int			skip;
 	t_size		size;
-	int		door_num;
-	t_door	*doors;
+	int			door_num;
+	t_door		*doors;
 }	t_map;
 
 typedef struct s_data

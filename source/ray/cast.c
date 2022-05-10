@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/05/10 09:56:20 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/10 10:10:18 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -65,6 +65,22 @@ static void	advance_ray(t_precomp *precomp, t_ray *ray, t_coord *coords)
 	}
 }
 
+static t_ray	add_ray_details(t_ray ray, t_point pos, t_precomp precomp)
+{
+	if (ray.side == 'E' || ray.side == 'W')
+	{
+		ray.distance = precomp.side_dist_x - precomp.delta_dist_x;
+		ray.wall_x = pos.y + ray.distance * precomp.ray_dir_y;
+	}
+	else
+	{
+		ray.distance = precomp.side_dist_y - precomp.delta_dist_y;
+		ray.wall_x = pos.x + ray.distance * precomp.ray_dir_x;
+	}
+	ray.wall_x -= floor(ray.wall_x);
+	return (ray);
+}
+
 t_ray	ray_cast(t_map map, t_point pos, double angle)
 {
 	t_precomp	precomp;
@@ -83,17 +99,7 @@ t_ray	ray_cast(t_map map, t_point pos, double angle)
 				break ;
 	}
 	ray.tile = map.tiles[coords.y][coords.x];
-	if (ray.side == 'E' || ray.side == 'W')
-	{
-		ray.distance = precomp.side_dist_x - precomp.delta_dist_x;
-		ray.wall_x = pos.y + ray.distance * precomp.ray_dir_y;
-	}
-	else
-	{
-		ray.distance = precomp.side_dist_y - precomp.delta_dist_y;
-		ray.wall_x = pos.x + ray.distance * precomp.ray_dir_x;
-	}
-	ray.wall_x -= floor(ray.wall_x);
+	ray = add_ray_details(ray, pos, precomp);
 	return (ray);
 }
 
