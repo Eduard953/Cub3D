@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:13:03 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/11 11:59:11 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 12:04:44 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ void	image_clear(t_data data, void *img)
 	int				endian;
 	int				idx;
 
-	img_addr = (unsigned int *)mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+	img_addr = (unsigned int *)mlx_get_data_addr(img, &bits_per_pixel,
+			&size_line, &endian);
 	idx = 0;
 	while (idx < WINDOW_WIDTH * (WINDOW_HEIGHT / 2))
 	{
