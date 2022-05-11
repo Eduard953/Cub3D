@@ -89,6 +89,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win;
 	void		*img;
+	int			mouse_x;
 	t_map		map;
 	t_player	ash;
 }	t_data;
@@ -119,5 +120,6 @@ void		draw_wall(t_data data, t_ray ray, int x);
 int			check_door_state(t_map map, t_coord coords);
 void		add_door(t_data *data, size_t i, size_t j);
 void		door_change_state(t_data *data);
+int			mouse_move(int x, int y, t_data *data);
 
 #endif

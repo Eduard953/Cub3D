@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/11 11:53:31 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:35:54 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init(t_data *data)
 	data->map.skip = 0;
 	data->map.doors = NULL;
 	data->map.door_num = 0;
+	data->mouse_x = WINDOW_WIDTH / 2;
 }
 
 int	loop(t_data *data)
@@ -59,6 +60,7 @@ int	main(int argc, char **argv)
 	data.win = mlx_new_window(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT, "CUB3D");
 	mlx_hook(data.win, 17, 0L, red_cross, &data);
 	mlx_hook(data.win, 2, 1L << 0, keys, &data);
+	mlx_hook(data.win, 6, 1L << 6, mouse_move, &data);
 	mlx_loop_hook(data.mlx, loop, &data);
 	data.img = mlx_new_image(data.mlx, WINDOW_WIDTH, WINDOW_HEIGHT);
 	mlx_loop(data.mlx);
