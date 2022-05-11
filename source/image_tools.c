@@ -6,22 +6,32 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/27 13:13:03 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/10 10:01:25 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 11:59:11 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	image_clear(void *mlx, void *img)
+void	image_clear(t_data data, void *img)
 {
-	char	*img_addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
+	unsigned int	*img_addr;
+	int				bits_per_pixel;
+	int				size_line;
+	int				endian;
+	int				idx;
 
-	img_addr = mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
-	ft_memset(img_addr, mlx_get_color_value(mlx, 0xFF000000),
-		WINDOW_WIDTH * WINDOW_HEIGHT * (bits_per_pixel / 8));
+	img_addr = (unsigned int *)mlx_get_data_addr(img, &bits_per_pixel, &size_line, &endian);
+	idx = 0;
+	while (idx < WINDOW_WIDTH * (WINDOW_HEIGHT / 2))
+	{
+		img_addr[idx] = mlx_get_color_value(data.mlx, data.map.ceiling_color);
+		idx++;
+	}
+	while (idx < WINDOW_WIDTH * WINDOW_HEIGHT)
+	{
+		img_addr[idx] = mlx_get_color_value(data.mlx, data.map.floor_color);
+		idx++;
+	}
 }
 
 void	image_pixel_put(t_data data, int x, int y, unsigned int color)

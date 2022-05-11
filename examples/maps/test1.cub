@@ -3,8 +3,8 @@ SO data/textures/purplestone.xpm
 WE data/textures/redbrick.xpm
 EA data/textures/greystone.xpm
 
-F 220,100,0
-C 225,30,0
+F 86,69,43
+C 21,210,239
 
         1111111111111111111111111
         1000000000110000000000001
