@@ -4,6 +4,13 @@ if [[ ! -f "$EXE_PATH" ]]; then
     exit 1
 fi
 
+MEMCHECKER=""
+if [[ ! -z `which valgrind` ]]; then
+    echo "Found valgrind using that"
+    MEMCHECKER="valgrind -q --leak-check=full"
+fi
+
+
 function run_test() {
     mappath="tests/test_maps/$1"
     comment="$2"
@@ -16,7 +23,7 @@ function run_test() {
         echo "Testing $comment"
     fi
     echo "Trying Map path: $mappath"
-    valgrind -q --leak-check=full $EXE_PATH $mappath
+    $MEMCHECKER $EXE_PATH $mappath
     errorcode=$?
     echo
     if [[ "$errorcode" == "$expect_code" ]]; then
