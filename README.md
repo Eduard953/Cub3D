@@ -38,7 +38,7 @@ reboot
 - [ ] BONUS: Minimap
 - [X] BONUS: Doors which can open and close
 - [ ] BONUS: animated sprite
-- [ ] BONUS: Rotate POV with Mouse
+- [X] BONUS: Rotate POV with Mouse
 
 ## Folder Structure:
 - `source/`: C Source Files (.c) and Private Header files (.h) sorted in subfolders
