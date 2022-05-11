@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/11 12:01:36 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:36:54 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_map {
 	t_texture	texture_east;
 	t_texture	texture_south;
 	t_texture	texture_west;
+	t_texture	texture_door;
 	int			ceiling_color;
 	int			floor_color;
 	int			skip;

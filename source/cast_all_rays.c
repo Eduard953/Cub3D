@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/25 10:35:17 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/04 20:47:41 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:38:16 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	cast_all_rays(t_data data)
 	{
 		angle = angleadd(offset, index * scale);
 		ray = ray_cast(data.map, data.ash.pos, angle);
-		if (ray.tile == '1')
+		if (ray.tile == '1' || ray.tile == '2')
 			draw_wall(data, ray, index * GFX_QUALITY);
 		else
 		{
