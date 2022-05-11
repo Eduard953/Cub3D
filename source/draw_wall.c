@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:47:14 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/04 21:00:40 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 10:57:51 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,18 @@ static unsigned int	get_color(t_texture texture, t_ray ray, int tex_pos)
 	return (color);
 }
 
+static void	draw_wide_pixel(t_data data, int x, int y, unsigned int color)
+{
+	int	idx;
+
+	idx = 0;
+	while (idx < GFX_QUALITY + 1)
+	{
+		image_pixel_put(data, x + idx, y, color);
+		idx++;
+	}
+}
+
 void	draw_wall(t_data data, t_ray ray, int x)
 {
 	int				draw;
@@ -62,7 +74,7 @@ void	draw_wall(t_data data, t_ray ray, int x)
 			+ (WINDOW_HEIGHT / ray.distance) / 2.0) * step;
 	while (draw < draw_end)
 	{
-		image_pixel_put(data, x, draw, get_color(texture, ray, tex_pos));
+		draw_wide_pixel(data, x, draw, get_color(texture, ray, tex_pos));
 		tex_pos += step;
 		draw++;
 	}
