@@ -23,7 +23,7 @@ reboot
 
 - [X] Window handling must remain smooth
 - [X] Display different wall textures based on which side the wall is facing
-- [ ] Different colors for Floor and Ceiling
+- [X] Different colors for Floor and Ceiling
 - [X] Left and Right arrow keys for turning left and right
 - [X] W, A, S, D to move the Player
 - [X] Esc must close the Window
@@ -36,7 +36,7 @@ reboot
 - [X] If there is any error in the file display Error and a newline followed by an explicit error message
 - [X] BONUS: Wall collisions
 - [ ] BONUS: Minimap
-- [ ] BONUS: Doors which can open and close
+- [X] BONUS: Doors which can open and close
 - [ ] BONUS: animated sprite
 - [ ] BONUS: Rotate POV with Mouse
 

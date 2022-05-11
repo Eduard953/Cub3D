@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/10 10:05:45 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 12:01:36 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ void		move_forward(t_data *data);
 void		move_backward(t_data *data);
 void		move_right(t_data *data);
 void		move_left(t_data *data);
-void		image_clear(void *mlx, void *img);
+void		image_clear(t_data data, void *img);
 void		image_pixel_put(t_data data, int x, int y, unsigned int color);
 t_texture	load_texture(void *mlx, char *filename);
 void		load_images(t_data	*data);
