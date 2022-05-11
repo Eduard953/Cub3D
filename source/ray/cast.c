@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.	  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/04/24 11:19:04 by pstengl		   #+#	#+#			 */
-/*   Updated: 2022/05/10 10:10:18 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 10:26:24 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -120,7 +120,9 @@ t_ray	door_ray_cast(t_map map, t_point pos, double angle)
 		if (map.tiles[coords.y][coords.x] == '2')
 			break ;
 	}
-	ray.tile = map.tiles[coords.y][coords.x];
+	if (coords.y > 0 && (size_t)coords.y < map.size.y
+		&& coords.x > 0 && (size_t)coords.x < map.size.x)
+		ray.tile = map.tiles[coords.y][coords.x];
 	if (ray.side == 'E' || ray.side == 'W')
 		ray.distance = precomp.side_dist_x - precomp.delta_dist_x;
 	else
