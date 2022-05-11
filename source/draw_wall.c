@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:47:14 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/11 10:57:51 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/11 17:37:53 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@ static t_texture	choose_texture(t_data data, t_ray ray)
 {
 	t_texture	texture;
 
-	if (ray.side == 'N')
-		texture = data.map.texture_north;
-	else if (ray.side == 'S')
-		texture = data.map.texture_south;
-	else if (ray.side == 'W')
-		texture = data.map.texture_west;
+	if (ray.tile == '1')
+	{
+		if (ray.side == 'N')
+			texture = data.map.texture_north;
+		else if (ray.side == 'S')
+			texture = data.map.texture_south;
+		else if (ray.side == 'W')
+			texture = data.map.texture_west;
+		else
+			texture = data.map.texture_east;
+	}
 	else
-		texture = data.map.texture_east;
+		texture = data.map.texture_door;
 	return (texture);
 }
 
