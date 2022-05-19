@@ -35,7 +35,7 @@ reboot
 - [X] Information preceded by their Identifier (NO, SO, WE, EA, F, C) and followed by the value
 - [X] If there is any error in the file display Error and a newline followed by an explicit error message
 - [X] BONUS: Wall collisions
-- [ ] BONUS: Minimap
+- [X] BONUS: Minimap
 - [X] BONUS: Doors which can open and close
 - [ ] BONUS: animated sprite
 - [X] BONUS: Rotate POV with Mouse

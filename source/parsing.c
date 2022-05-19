@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/11 16:01:19 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/19 19:41:49 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	parse_player(t_data *data, size_t i, size_t j)
 {
 	if (data->map.tiles[i][j] == 'N')
 		data->ash.view_angle = 0;
-	else if (data->map.tiles[i][j] == 'W')
+	else if (data->map.tiles[i][j] == 'E')
 		data->ash.view_angle = 90;
 	else if (data->map.tiles[i][j] == 'S')
 		data->ash.view_angle = 180;
-	else if (data->map.tiles[i][j] == 'E')
+	else if (data->map.tiles[i][j] == 'W')
 		data->ash.view_angle = 270;
 	data->map.tiles[i][j] = '0';
 	data->ash.pos.x = j + 0.5;
