@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:45:48 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/19 16:26:54 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:30:13 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	draw_minimap(t_data data)
 	t_coord			player_pos;
 	unsigned int	scale;
 
-	scale = ft_min(WINDOW_HEIGHT * MINIMAP_SIZE / data.map.size.y, WINDOW_WIDTH * MINIMAP_SIZE / data.map.size.x);
+	scale = ft_min(WINDOW_HEIGHT * MINIMAP_SIZE / data.map.size.y,
+			WINDOW_WIDTH * MINIMAP_SIZE / data.map.size.x);
 	pos.x = 0;
 	while ((size_t)pos.x < data.map.size.x)
 	{
