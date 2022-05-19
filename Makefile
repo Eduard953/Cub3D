@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/05/10 09:51:20 by pstengl          ###   ########.fr        #
+#    Updated: 2022/05/19 15:50:15 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCFILES:=\
 	load_images.c\
 	image_tools.c\
 	draw_wall.c\
+	minimap.c\
 	angles.c\
 	cast_all_rays.c\
 	check_arguments.c\
