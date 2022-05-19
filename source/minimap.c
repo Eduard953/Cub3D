@@ -6,7 +6,7 @@
 /*   By: pstengl <pstengl@student.42wolfsburg.      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/19 15:45:48 by pstengl           #+#    #+#             */
-/*   Updated: 2022/05/19 16:22:18 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:26:54 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,40 @@ static void	draw_block(t_data data, t_coord pos, unsigned int size,
 	}
 }
 
-static void	choose_block(t_data data, t_coord pos)
+static void	choose_block(t_data data, t_coord pos, unsigned int scale)
 {
 	if (data.map.tiles[pos.y][pos.x] == '0')
-		draw_block(data, pos, 10, 0xFF000000);
+		draw_block(data, pos, scale, 0xFF000000);
 	else if (data.map.tiles[pos.y][pos.x] == '1')
-		draw_block(data, pos, 10, 0xFF595959);
+		draw_block(data, pos, scale, 0xFF595959);
 	else if (data.map.tiles[pos.y][pos.x] == '2')
 	{
 		if (!check_door_state(data.map, pos))
-			draw_block(data, pos, 10, 0xFFdb8a34);
+			draw_block(data, pos, scale, 0xFFdb8a34);
 		else
-			draw_block(data, pos, 10, 0xFF34db8a);
+			draw_block(data, pos, scale, 0xFF34db8a);
 	}
 }
 
 void	draw_minimap(t_data data)
 {
-	t_coord	pos;
-	t_coord	player_pos;
+	t_coord			pos;
+	t_coord			player_pos;
+	unsigned int	scale;
 
+	scale = ft_min(WINDOW_HEIGHT * MINIMAP_SIZE / data.map.size.y, WINDOW_WIDTH * MINIMAP_SIZE / data.map.size.x);
 	pos.x = 0;
 	while ((size_t)pos.x < data.map.size.x)
 	{
 		pos.y = 0;
 		while ((size_t)pos.y < data.map.size.y)
 		{
-			choose_block(data, pos);
+			choose_block(data, pos, scale);
 			pos.y++;
 		}
 		pos.x++;
 	}
 	player_pos.x = data.ash.pos.x;
 	player_pos.y = data.ash.pos.y;
-	draw_block(data, player_pos, 10, 0xFFFFFFFF);
+	draw_block(data, player_pos, scale, 0xFFFFFFFF);
 }

@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/19 16:10:56 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:27:25 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define WALL_DIST		0.25
 # define GFX_QUALITY	1
 # define DOOR_DIST		1
+# define MINIMAP_SIZE	0.3
 
 # include <fcntl.h>
 # include <stdio.h>
