@@ -1,3 +1,5 @@
+#!/bin/bash
+
 EXE_PATH=./binaries/Cub3D
 if [[ ! -f "$EXE_PATH" ]]; then
     echo "No Binary found"

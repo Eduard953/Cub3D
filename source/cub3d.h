@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/11 17:36:54 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/19 16:27:25 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define WALL_DIST		0.25
 # define GFX_QUALITY	1
 # define DOOR_DIST		1
+# define MINIMAP_SIZE	0.3
 
 # include <fcntl.h>
 # include <stdio.h>
@@ -122,5 +123,6 @@ int			check_door_state(t_map map, t_coord coords);
 void		add_door(t_data *data, size_t i, size_t j);
 void		door_change_state(t_data *data);
 int			mouse_move(int x, int y, t_data *data);
+void		draw_minimap(t_data data);
 
 #endif

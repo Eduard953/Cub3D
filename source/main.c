@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/11 17:35:54 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/19 15:49:42 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	loop(t_data *data)
 {
 	image_clear(*data, data->img);
 	cast_all_rays(*data);
+	draw_minimap(*data);
 	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 	return (0);
 }
