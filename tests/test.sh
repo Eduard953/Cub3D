@@ -51,6 +51,7 @@ run_test "notenclosed.cub" "map is not enclosed"
 run_test "spawnnotmap.cub" "spawn is not on map"
 run_test "spawnaswall.cub" "spawn is a wall tile"
 run_test "doublespawn.cub" "2 spawn points"
+run_test "withnewline.cub" "with newlines in file" 0
 
 run_test "test2.cub" "Correct Map" 0
 run_test "test1.cub" "Correct Map" 0
