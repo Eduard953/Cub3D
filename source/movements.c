@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:20:28 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/02 15:39:48 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/19 19:44:55 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ void	move_forward(t_data *data)
 		data->ash.pos.x -= dx;
 		data->ash.pos.y -= dy;
 	}
-	printf("Position: %f, %f\n", data->ash.pos.x, data->ash.pos.y);
 }
 
 void	move_backward(t_data *data)
@@ -47,13 +46,11 @@ void	move_backward(t_data *data)
 
 	dy = cos(degtorad(data->ash.view_angle)) * MOVE_SPEED;
 	dx = -sin(degtorad(data->ash.view_angle)) * MOVE_SPEED;
-	printf("delta x: %f, delta y: %f\n", dx, dy);
 	if (!cast_ray(*data, 180))
 	{
 		data->ash.pos.x += dx;
 		data->ash.pos.y += dy;
 	}
-	printf("Position: %f, %f\n", data->ash.pos.x, data->ash.pos.y);
 }
 
 void	move_left(t_data *data)
@@ -68,7 +65,6 @@ void	move_left(t_data *data)
 		data->ash.pos.x += dx;
 		data->ash.pos.y += dy;
 	}
-	printf("Position: %f, %f\n", data->ash.pos.x, data->ash.pos.y);
 }
 
 void	move_right(t_data *data)
@@ -83,5 +79,4 @@ void	move_right(t_data *data)
 		data->ash.pos.x += dx;
 		data->ash.pos.y += dy;
 	}
-	printf("Position: %f, %f\n", data->ash.pos.x, data->ash.pos.y);
 }
