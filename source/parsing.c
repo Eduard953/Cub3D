@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/20 20:29:23 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:32:22 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	parse_map(t_data *data, char **argv)
 	row++;
 	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
-	free(data->map.tiles[row]);
 	close(fd);
 }
 
