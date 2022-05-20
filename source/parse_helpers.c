@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/04 20:44:49 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:29:09 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	parse_line(t_data *data, char *line, int fd)
 	while (line[i] == ' ')
 		i++;
 	if (line[i] == '\0')
-		return (1);
+		return (data->map.skip++);
 	if (line[i] == 'N' && line[i + 1] == 'O')
 		data->map.texture_north = parse_texture(line + i + 2);
 	else if (line[i] == 'S' && line[i + 1] == 'O')

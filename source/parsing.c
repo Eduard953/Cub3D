@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/19 19:41:49 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/20 20:29:23 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,13 @@ void	parse_map(t_data *data, char **argv)
 	data->map.tiles = malloc((data->map.size.y + 1) * sizeof(char *));
 	data->map.tiles[data->map.size.y] = NULL;
 	fd = open(argv[1], O_RDONLY);
-	while (get_next_line(fd, &data->map.tiles[row]) && data->map.skip >= 0)
+	while (get_next_line(fd, &data->map.tiles[row]) && data->map.skip > 0)
 	{
 		data->map.skip--;
+		printf("%s\n", data->map.tiles[row]);
 		free(data->map.tiles[row]);
 	}
-	free(data->map.tiles[row]);
+	row++;
 	while (get_next_line(fd, &data->map.tiles[row]))
 		row++;
 	free(data->map.tiles[row]);
