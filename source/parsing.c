@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/20 20:32:22 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/22 13:44:58 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,9 @@ int	parse_player(t_data *data, size_t i, size_t j)
 
 int	get_x_y(t_data *data, char *line, int fd)
 {
+	size_t	i;
+
+	i = 0;
 	data->map.size.x = ft_strlen(line);
 	free(line);
 	while (get_next_line(fd, &line))
@@ -53,9 +56,14 @@ int	get_x_y(t_data *data, char *line, int fd)
 		if (ft_strlen(line) > data->map.size.x)
 			data->map.size.x = ft_strlen(line);
 		data->map.size.y++;
+		while (line[i] == ' ')
+			i++;
+		if (line[i] == '\0')
+			error_message("newline in map");
 		free(line);
 	}
 	free(line);
+	data->map.size.y++;
 	data->map.size.y++;
 	return (0);
 }
@@ -72,7 +80,6 @@ void	parse_map(t_data *data, char **argv)
 	while (get_next_line(fd, &data->map.tiles[row]) && data->map.skip > 0)
 	{
 		data->map.skip--;
-		printf("%s\n", data->map.tiles[row]);
 		free(data->map.tiles[row]);
 	}
 	row++;
