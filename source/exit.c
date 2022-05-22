@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/10 16:19:35 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/11 17:38:33 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/22 11:37:08 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	end_game(t_data *data)
 		free(data->map.tiles[i]);
 		i++;
 	}
+	free(data->map.tiles[i]);
 	free(data->map.tiles);
 	return (0);
 }
