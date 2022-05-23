@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/23 11:24:22 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/23 13:17:46 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ void	check_top_bottom(t_data *data)
 	while (data->map.tiles[0][i] != '\0')
 	{
 		if (ft_strchr("1 ", data->map.tiles[0][i]) == NULL)
-			error_message("top not surrounded by walls");
+			free_error(data, "top not surrounded by walls");
 		i++;
 	}
 	i = 0;
 	while (data->map.tiles[data->map.size.y - 1][i] != '\0')
 	{
 		if (ft_strchr("1 ", data->map.tiles[data->map.size.y - 1][i]) == NULL)
-			error_message("bottom not surrounded by walls");
+			free_error(data, "bottom not surrounded by walls");
 		i++;
 	}
 }
@@ -110,7 +110,7 @@ void	check_map(t_data *data)
 		while (j < data->map.size.x)
 		{
 			if (ft_strchr("012NSEW ", data->map.tiles[i][j]) == NULL)
-				error_message("invalid map");
+				free_error(data, "invalid map");
 			else if (ft_strchr("NSEW", data->map.tiles[i][j])
 				&& data->map.tiles[i][j] != '\0')
 				p += parse_player(data, i, j);

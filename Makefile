@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/05/23 10:54:03 by pstengl          ###   ########.fr        #
+#    Updated: 2022/05/23 13:33:53 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRCFILES:=\
 	cast_all_rays.c\
 	check_arguments.c\
 	parse_helpers.c\
+	parse_map.c\
 	parsing.c\
 	hook.c\
 	doors.c\

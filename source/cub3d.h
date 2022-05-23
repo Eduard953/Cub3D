@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/23 11:22:51 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/23 13:38:10 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -126,5 +126,6 @@ int			mouse_move(int x, int y, t_data *data);
 void		draw_minimap(t_data data);
 void		free_data(t_data *data);
 void		free_error(t_data *data, char *msg);
+void		parse_map(t_data *data, char **argv);
 
 #endif

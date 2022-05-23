@@ -57,6 +57,7 @@ run_test "spawnnotmap.cub" "spawn is not on map"
 run_test "spawnaswall.cub" "spawn is a wall tile"
 run_test "doublespawn.cub" "2 spawn points"
 run_test "newlinemap.cub" "with newlines in map"
+run_test "newlineaftermap.cub" "with newlines after the map" 0
 run_test "withnewline.cub" "with newlines in file" 0
 
 run_test "test2.cub" "Correct Map" 0
