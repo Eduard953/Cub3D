@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/05 14:35:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/20 20:24:19 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:30:04 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 void	error_message(char *message)
 {
-	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd("Error: ", 2);
 	ft_putstr_fd(message, 2);
+	ft_putstr_fd("\n", 2);
 	exit(1);
 }
 
@@ -29,6 +30,7 @@ void	init(t_data *data)
 	data->map.texture_east.filename = NULL;
 	data->map.texture_south.filename = NULL;
 	data->map.texture_west.filename = NULL;
+	data->map.texture_door.filename = NULL;
 	data->map.ceiling_color = -1;
 	data->map.floor_color = -1;
 	data->map.size.x = 0;

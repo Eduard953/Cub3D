@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>		 +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
 /*   Created: 2022/03/31 16:24:05 by ebeiline		  #+#	#+#			 */
-/*   Updated: 2022/05/19 16:27:25 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/23 11:22:51 by pstengl          ###   ########.fr       */
 /*																			*/
 /* ************************************************************************** */
 
@@ -124,5 +124,7 @@ void		add_door(t_data *data, size_t i, size_t j);
 void		door_change_state(t_data *data);
 int			mouse_move(int x, int y, t_data *data);
 void		draw_minimap(t_data data);
+void		free_data(t_data *data);
+void		free_error(t_data *data, char *msg);
 
 #endif

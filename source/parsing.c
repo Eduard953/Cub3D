@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 16:21:56 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/22 13:44:58 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/23 11:27:15 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 void	check_parse(t_data *data)
 {
 	if (data->map.texture_north.filename == NULL)
-		error_message("no texture north");
+		free_error(data, "Missing Texture north");
 	if (data->map.texture_east.filename == NULL)
-		error_message("no texture east");
+		free_error(data, "Missing Texture east");
 	if (data->map.texture_south.filename == NULL)
-		error_message("no texture south");
+		free_error(data, "Missing Texture south");
 	if (data->map.texture_west.filename == NULL)
-		error_message("no texture west");
+		free_error(data, "Missing Texture west");
 	if (data->map.ceiling_color == -1)
-		error_message("no ceiling color");
+		free_error(data, "Missing Ceiling color");
 	if (data->map.floor_color == -1)
-		error_message("no floor color");
+		free_error(data, "Missing Floor color");
 }
 
 int	parse_player(t_data *data, size_t i, size_t j)
@@ -59,7 +59,10 @@ int	get_x_y(t_data *data, char *line, int fd)
 		while (line[i] == ' ')
 			i++;
 		if (line[i] == '\0')
-			error_message("newline in map");
+		{
+			free(line);
+			free_error(data, "newline in map");
+		}
 		free(line);
 	}
 	free(line);
@@ -74,8 +77,7 @@ void	parse_map(t_data *data, char **argv)
 	int		fd;
 
 	row = 0;
-	data->map.tiles = malloc((data->map.size.y + 1) * sizeof(char *));
-	data->map.tiles[data->map.size.y] = NULL;
+	data->map.tiles = ft_calloc((data->map.size.y + 1), sizeof(char *));
 	fd = open(argv[1], O_RDONLY);
 	while (get_next_line(fd, &data->map.tiles[row]) && data->map.skip > 0)
 	{

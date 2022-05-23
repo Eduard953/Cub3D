@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/01 12:10:29 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/02 10:56:53 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/23 11:33:15 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	add_door(t_data *data, size_t i, size_t j)
 		data->map.doors = malloc(sizeof(struct s_door) * data->map.door_num);
 		data->map.door_num = 0;
 		if (!data->map.doors)
-			error_message("malloc of door struct failed");
+			free_error(data, "malloc of door struct failed");
 	}
 	data->map.doors[data->map.door_num].pos.x = j;
 	data->map.doors[data->map.door_num].pos.y = i;

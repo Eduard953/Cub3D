@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 14:27:58 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/20 20:29:09 by ebeiline         ###   ########.fr       */
+/*   Updated: 2022/05/23 10:36:12 by pstengl          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ t_texture	parse_texture(char *line)
 	filename = ft_strtrim(line, " ");
 	len = ft_strlen(filename);
 	if (len < 5 || ft_strnstr(filename + len - 4, ".xpm", 4) == NULL)
+	{
+		free(filename);
 		error_message("use .xpm filename");
+	}
 	tex.filename = filename;
 	return (tex);
 }

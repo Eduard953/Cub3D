@@ -6,7 +6,7 @@
 #    By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/30 17:16:39 by pstengl           #+#    #+#              #
-#    Updated: 2022/05/20 20:27:29 by ebeiline         ###   ########.fr        #
+#    Updated: 2022/05/23 10:54:03 by pstengl          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCFILES:=\
 	texture.c\
 	load_images.c\
 	image_tools.c\
+	free_data.c\
 	draw_wall.c\
 	minimap.c\
 	angles.c\
@@ -153,13 +154,7 @@ else
 endif
 
 # Run the test script
-test: norm all
-ifeq ($(wildcard $(TESTS)/test.sh),)
-	$(error "Test Script test.sh not found in $(TESTS)")
-endif
-	@./tests/test.sh --no-memcheck
-
-memtest: norm all
+test: norm re
 ifeq ($(wildcard $(TESTS)/test.sh),)
 	$(error "Test Script test.sh not found in $(TESTS)")
 endif

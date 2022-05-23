@@ -9,7 +9,7 @@ fi
 MEMCHECKER=""
 if [[ ! -z `which valgrind` ]]; then
     echo "Found valgrind using that"
-    MEMCHECKER="valgrind -q --leak-check=full"
+    MEMCHECKER="valgrind -q --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all --error-exitcode=42"
 fi
 
 
@@ -27,7 +27,12 @@ function run_test() {
     echo "Trying Map path: $mappath"
     $MEMCHECKER $EXE_PATH $mappath
     errorcode=$?
+    echo "EXITCODE: $errorcode"
     echo
+    if [[ "$errorcode" == "42" ]]; then
+        echo "==FAIL=="
+        exit 1
+    fi
     if [[ "$errorcode" == "$expect_code" ]]; then
         echo "==PASS=="
     else
@@ -51,6 +56,7 @@ run_test "notenclosed.cub" "map is not enclosed"
 run_test "spawnnotmap.cub" "spawn is not on map"
 run_test "spawnaswall.cub" "spawn is a wall tile"
 run_test "doublespawn.cub" "2 spawn points"
+run_test "newlinemap.cub" "with newlines in map"
 run_test "withnewline.cub" "with newlines in file" 0
 
 run_test "test2.cub" "Correct Map" 0
