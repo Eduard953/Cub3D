@@ -6,7 +6,7 @@
 /*   By: ebeiline <ebeiline@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/30 15:56:11 by ebeiline          #+#    #+#             */
-/*   Updated: 2022/05/23 13:17:46 by pstengl          ###   ########.fr       */
+/*   Updated: 2022/05/24 17:46:28 by ebeiline         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,13 +56,13 @@ void	check_top_bottom(t_data *data)
 
 void	check_spaces(t_data *data, size_t i, size_t j)
 {
-	if (data->map.tiles[i - 1][j] == ' ')
+	if (data->map.tiles[i - 1][j] == ' ' || data->map.tiles[i - 1][j] == '\0')
 		free_error(data, "map not surrounded by walls");
-	if (data->map.tiles[i + 1][j] == ' ')
+	if (data->map.tiles[i + 1][j] == ' ' || data->map.tiles[i + 1][j] == '\0')
 		free_error(data, "map not surrounded by walls");
-	if (data->map.tiles[i][j - 1] == ' ')
+	if (data->map.tiles[i][j - 1] == ' ' || data->map.tiles[i][j - 1] == '\0')
 		free_error(data, "map not surrounded by walls");
-	if (data->map.tiles[i][j + 1] == ' ')
+	if (data->map.tiles[i][j + 1] == ' ' || data->map.tiles[i][j + 1] == '\0')
 		free_error(data, "map not surrounded by walls");
 }
 
